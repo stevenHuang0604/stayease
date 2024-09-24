@@ -1,5 +1,5 @@
 import { FaRegMoon } from "react-icons/fa6";
-import Button from "../../components/Button";
+import Button from "../../ui/Button";
 
 function Navigation() {
   return (
