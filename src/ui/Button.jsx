@@ -11,6 +11,7 @@ function Button({
   let className =
     "flex items-center rounded-lg font-semibold  transition-all duration-200 ";
 
+  // variant styles
   const variants = {
     default: "",
     outline: "bg-transparent outline outline-1",
@@ -19,7 +20,7 @@ function Button({
   };
   className += variants[variant] + " ";
 
-  // 顏色樣式
+  // color styles
   const colors = {
     primary: {
       default: "bg-violet-600 text-slate-50 hover:bg-violet-800",
@@ -52,7 +53,7 @@ function Button({
   };
   className += colors[color][variant] + " ";
 
-  // 尺寸樣式
+  // size styles
   const sizes = {
     small: "px-2 py-1 text-sm shadow-sm",
     medium: "px-3 py-1.5 text-base shadow",
@@ -60,41 +61,6 @@ function Button({
     xl: "px-6 py-3 text-xl shadow-xl",
   };
   className += sizes[size] + " ";
-
-  // switch (type) {
-  //   case "primary":
-  //     className += "bg-violet-600 text-slate-50 ";
-  //     break;
-  //   default:
-  //     className += "bg-slate-50 text--violet-600 ";
-  // }
-
-  // switch (size) {
-  //   case "small":
-  //   case "medium":
-  //     className += "py-1.5 px-2.5 ";
-  //     break;
-  //   case "large":
-  //   default:
-  // }
-
-  // if (style === "outline") {
-  //   className += "outline outline-1 outline-violet-600 text-violet-600 ";
-  // }
-
-  // if (to) {
-  //   return (
-  //     <Link to={to} className={className}>
-  //       {children}
-  //     </Link>
-  //   );
-  // }
-
-  // return (
-  //   <button className={className} onClick={onClick}>
-  //     {children}
-  //   </button>
-  // );
 
   const Element = to ? Link : "button";
 
