@@ -7,13 +7,13 @@ function Navigation() {
   return (
     <nav className="mx-auto max-w-full border-b-[1px] bg-violet-50 bg-opacity-30">
       <div className="flex h-20 items-center px-8 py-3">
-        <div className="flex h-full items-center gap-4">
-          <Link to="/" className="h-full">
+        <div className="h-full">
+          <Link to="/" className="flex h-full items-center gap-4">
             <Logo />
+            <div className="font-Agbalumo text-2xl font-bold tracking-wide text-violet-600">
+              StayEase
+            </div>
           </Link>
-          <div className="font-Agbalumo text-2xl font-bold tracking-wide text-violet-600">
-            StayEase
-          </div>
         </div>
         <ul className="ml-auto flex items-center gap-4 text-lg">
           <li>
@@ -23,7 +23,7 @@ function Navigation() {
               size="medium"
               to="./signin"
             >
-              SignIn
+              Sign In
             </Button>
           </li>
           <li>
@@ -33,7 +33,7 @@ function Navigation() {
               size="medium"
               to="/signup"
             >
-              SignUp
+              Sign Up
             </Button>
           </li>
           <li>

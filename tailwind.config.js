@@ -12,6 +12,9 @@ export default {
       fontFamily: {
         sans: ["Roboto", ...defaultTheme.fontFamily.sans],
       },
+      gridTemplateColumns: {
+        "auto-fit": "repeat(auto-fit, minmax(250px, 1fr))",
+      },
     },
   },
 };
