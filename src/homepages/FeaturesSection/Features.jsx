@@ -4,7 +4,7 @@ import features from "../../utils/features";
 
 function Features() {
   return (
-    <div className="bg-violet-100 px-16 py-16">
+    <section className="bg-violet-100 px-16 py-16">
       <div className="flex flex-col gap-10">
         <SectionTitle>Our Best Features</SectionTitle>
         <p className="font-lg mx-auto max-w-[65%] text-center text-xl font-light text-slate-600">
@@ -24,7 +24,7 @@ function Features() {
           ))}
         </ul>
       </div>
-    </div>
+    </section>
   );
 }
 

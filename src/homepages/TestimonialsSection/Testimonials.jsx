@@ -6,7 +6,7 @@ function Testimonials() {
   const groupUsers = [users.slice(0, 3), users.slice(3, 7), users.slice(7, 10)];
 
   return (
-    <div className="bg-violet-50 px-16 py-16">
+    <section className="bg-violet-50 px-16 py-16">
       <div className="flex flex-col gap-10">
         <SectionTitle>User feedback</SectionTitle>
         <p className="font-lg mx-auto max-w-[65%] text-center text-xl font-light text-slate-600">
@@ -30,7 +30,7 @@ function Testimonials() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
