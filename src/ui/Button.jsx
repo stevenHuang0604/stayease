@@ -9,7 +9,7 @@ function Button({
   children,
 }) {
   let className =
-    "flex items-center rounded-lg font-semibold  transition-all duration-200 ";
+    "flex items-center rounded-lg font-semibold  transition-all duration-200 tracking-wide ";
 
   // variant styles
   const variants = {
