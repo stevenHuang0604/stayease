@@ -1,5 +1,4 @@
 import Button from "../../ui/Button";
-import Logo from "../NavigationSection/Logo";
 
 function HeroContent() {
   return (
