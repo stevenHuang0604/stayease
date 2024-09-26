@@ -17,13 +17,13 @@ function Testimonials() {
         <div className="grid grid-cols-3 gap-8">
           {groupUsers.map((group, groupIndex) => (
             <div key={groupIndex} className="flex flex-col gap-8">
-              {group.map((user) => (
+              {group.map((user, index) => (
                 <TestimonialItem
                   name={user.name}
                   feedback={user.feedback}
                   title={user.title}
                   avatar={user.avatar}
-                  key={self.crypto.randomUUID()}
+                  key={`${groupIndex}-${index}`}
                 />
               ))}
             </div>

@@ -3,7 +3,6 @@ function Footer() {
     <footer className="bg-violet-900 pt-10 text-slate-200">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {/* About StayEase */}
           <div className="flex flex-col items-center justify-center">
             <img
               src="/logo-dark.svg"
