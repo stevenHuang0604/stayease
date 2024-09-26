@@ -35,4 +35,5 @@ function TestimonialItem({ name, feedback, title, avatar }) {
   );
 }
 
+// use React.memo to prevent unnecessarily render
 export default memo(TestimonialItem);
