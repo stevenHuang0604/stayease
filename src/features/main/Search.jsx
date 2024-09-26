@@ -1,18 +1,16 @@
 import { FiCalendar, FiSearch, FiUsers } from "react-icons/fi";
 import Button from "../../ui/Button";
 
-const Divider = () => <div className="mx-2 h-full w-px bg-gray-300"></div>;
-
 function Search() {
   return (
-    <div className="mx-auto w-[90%]">
-      <div className="flex justify-center">
-        <div className="border-1 flex w-full max-w-max items-center justify-center rounded-lg border border-slate-300 pr-4">
-          <div className="p-1">
+    <div className="mx-auto w-full max-w-[1160px] shadow-lg">
+      <div className="border-1 w-full rounded-lg bg-violet-200 p-4">
+        <div className="flex flex-col items-center justify-center gap-4 lg:flex-row">
+          <div className="w-full rounded-lg border border-slate-300 bg-white p-1 lg:w-auto">
             <form>
-              <div className="flex w-full items-center gap-3 rounded-md p-2">
+              <div className="flex items-center gap-3 rounded-md p-2">
                 <FiSearch className="h-6 w-6 text-lg" />
-                <span className="flex flex-col">
+                <span className="flex w-full flex-col">
                   <label
                     htmlFor="destination"
                     className="text-xs text-slate-400"
@@ -23,27 +21,25 @@ function Search() {
                     type="text"
                     id="destination"
                     placeholder="Where to go?"
-                    className="w-full border-b-2 border-b-transparent placeholder-slate-900 outline-none transition-all placeholder:text-sm placeholder:font-medium hover:border-b-violet-600 focus:outline-none"
+                    className="border-b-2 border-b-transparent placeholder-slate-900 outline-none transition-all placeholder:text-sm placeholder:font-medium hover:border-b-violet-600 focus:outline-none"
                   />
                 </span>
               </div>
             </form>
           </div>
 
-          <Divider />
-
-          <div className="p-1">
+          <div className="w-full rounded-lg border border-slate-300 bg-white p-1 lg:w-auto">
             <form>
               <div className="flex items-center gap-3 rounded-md p-2">
                 <FiCalendar className="h-6 w-6 text-lg" />
-                <span className="flex flex-col">
+                <span className="flex w-full flex-col">
                   <label htmlFor="checkin" className="text-xs text-slate-400">
                     Check in
                   </label>
                   <input
-                    type="date"
+                    type="text"
                     id="checkin"
-                    placeholder="Where to go?"
+                    placeholder="Thu, Sep 26"
                     className="w-full border-b-2 border-b-transparent placeholder-slate-900 outline-none transition-all placeholder:text-sm placeholder:font-medium hover:border-b-violet-600 focus:outline-none"
                   />
                 </span>
@@ -51,20 +47,18 @@ function Search() {
             </form>
           </div>
 
-          <Divider />
-
-          <div className="p-1">
+          <div className="w-full rounded-lg border border-slate-300 bg-white p-1 lg:w-auto">
             <form>
               <div className="flex items-center gap-3 rounded-md p-2">
                 <FiCalendar className="h-6 w-6 text-lg" />
-                <span className="flex flex-col">
+                <span className="flex w-full flex-col">
                   <label htmlFor="checkout" className="text-xs text-slate-400">
                     Check out
                   </label>
                   <input
-                    type="date"
+                    type="text"
                     id="checkout"
-                    placeholder="Where to go?"
+                    placeholder="Fri, Sep 27"
                     className="w-full border-b-2 border-b-transparent placeholder-slate-900 outline-none transition-all placeholder:text-sm placeholder:font-medium hover:border-b-violet-600 focus:outline-none"
                   />
                 </span>
@@ -72,41 +66,21 @@ function Search() {
             </form>
           </div>
 
-          <Divider />
-
-          <div className="p-1">
+          <div className="w-full rounded-lg border border-slate-300 bg-white p-1 lg:w-auto">
             <form>
               <div className="flex items-center gap-3 rounded-md p-2">
                 <FiUsers className="h-6 w-6 text-lg" />
-                <span className="flex flex-col">
-                  <label htmlFor="guests" className="text-xs text-slate-400">
-                    Guests
+                <span className="flex w-full flex-col">
+                  <label
+                    htmlFor="guestsandrooms"
+                    className="text-xs text-slate-400"
+                  >
+                    Guests and rooms
                   </label>
                   <input
-                    type="number"
-                    id="guests"
-                    placeholder="2 Guests"
-                    className="w-full border-b-2 border-b-transparent placeholder-slate-900 outline-none transition-all placeholder:text-sm placeholder:font-medium hover:border-b-violet-600 focus:outline-none"
-                  />
-                </span>
-              </div>
-            </form>
-          </div>
-
-          <Divider />
-
-          <div className="p-1">
-            <form>
-              <div className="flex items-center gap-3 rounded-md p-2">
-                <FiUsers className="h-6 w-6 text-lg" />
-                <span className="flex flex-col">
-                  <label htmlFor="rooms" className="text-xs text-slate-400">
-                    Rooms
-                  </label>
-                  <input
-                    type="number"
-                    id="rooms"
-                    placeholder="1 Room"
+                    type="text"
+                    id="guestsandrooms"
+                    placeholder="2 Guests, 1 Room"
                     className="w-full border-b-2 border-b-transparent placeholder-slate-900 outline-none transition-all placeholder:text-sm placeholder:font-medium hover:border-b-violet-600 focus:outline-none"
                   />
                 </span>
