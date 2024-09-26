@@ -55,9 +55,9 @@ function Button({
 
   // size styles
   const sizes = {
-    small: "px-2 py-1 text-sm shadow-sm",
-    medium: "px-3 py-1.5 text-base shadow",
-    large: "px-4 py-2 text-lg shadow-lg",
+    small: "px-2 py-1 sm:text-sm shadow-sm text-xs",
+    medium: "px-3 py-1.5 md:text-base shadow text-sm",
+    large: "px-4 py-2 lg:text-lg shadow-lg text-base",
     xl: "px-6 py-3 text-xl shadow-xl",
   };
   className += sizes[size] + " ";

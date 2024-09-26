@@ -12,9 +12,9 @@ function TestimonialItem({ name, feedback, title, avatar }) {
   }, [avatar]);
 
   return (
-    <div className="rounded-xl border-2 border-solid border-slate-200 bg-slate-50 p-6 transition-all duration-200 hover:border-violet-200 hover:shadow-xl">
+    <div className="rounded-xl border-2 border-solid border-slate-200 bg-slate-50 p-6 transition-all duration-200 hover:border-violet-200 hover:shadow-xl md:p-4 lg:p-6">
       <div className="flex flex-col gap-6">
-        <div className="flex items-center justify-start gap-3">
+        <div className="flex items-center justify-start gap-3 md:flex-col lg:flex-row">
           <div className="h-12 w-12 overflow-hidden rounded-full">
             {imageLoaded ? (
               <img src={avatar} className="w-fill h-full object-cover" />
@@ -25,7 +25,7 @@ function TestimonialItem({ name, feedback, title, avatar }) {
             )}
           </div>
           <div className="flex flex-col justify-center gap-[2px]">
-            <h4 className="text-lg font-bold">{name}</h4>
+            <h4 className="text-lg font-bold md:text-base">{name}</h4>
             <span className="text-xs text-slate-400">{title}</span>
           </div>
         </div>
