@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-import { BiBorderRadius } from "react-icons/bi";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
@@ -15,6 +14,7 @@ export default {
       },
       gridTemplateColumns: {
         "auto-fit": "repeat(auto-fit, minmax(250px, 1fr))",
+        testimonial: "repeat(3,minmax(0,450px))",
       },
       BorderRadius: {
         circle: "50%",

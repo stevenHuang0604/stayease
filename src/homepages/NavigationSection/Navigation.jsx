@@ -17,12 +17,7 @@ function Navigation() {
         </div>
         <ul className="ml-auto flex items-center gap-4 text-lg">
           <li>
-            <Button
-              variant="default"
-              color="primary"
-              size="medium"
-              to="./signin"
-            >
+            <Button variant="default" color="primary" size="medium" to="/app">
               Sign In
             </Button>
           </li>
