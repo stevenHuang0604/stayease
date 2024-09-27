@@ -7,6 +7,15 @@ import PageNotFound from "./pages/PageNotFound";
 import Index from "./pages";
 import Bookmarks from "./pages/Bookmarks";
 import MyReservations from "./pages/MyReservations";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+    },
+  },
+});
 
 const router = createBrowserRouter([
   {
@@ -17,7 +26,10 @@ const router = createBrowserRouter([
     path: "/app",
     element: <AppLayout />,
     children: [
-      { index: true, element: <Index /> },
+      {
+        index: true,
+        element: <Index />,
+      },
       {
         path: "bookmarks",
         element: <Bookmarks />,
@@ -39,7 +51,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />;
+    </QueryClientProvider>
+  );
 }
 
 export default App;
