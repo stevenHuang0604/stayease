@@ -8,6 +8,10 @@ import Index from "./pages";
 import Bookmarks from "./pages/Bookmarks";
 import MyReservations from "./pages/MyReservations";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import HotelDetail, {
+  loader as hotelLoader,
+} from "./features/main/HotelDetail";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,6 +33,11 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Index />,
+      },
+      {
+        path: "hotels/:id",
+        element: <HotelDetail />,
+        loader: hotelLoader,
       },
       {
         path: "bookmarks",
@@ -53,7 +62,8 @@ const router = createBrowserRouter([
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />;
+      <ReactQueryDevtools initialIsOpen={true} />
+      <RouterProvider router={router} />
     </QueryClientProvider>
   );
 }
