@@ -1,4 +1,4 @@
-function SearchItem({ fieldName, placeholder, fieldIcon }) {
+function SearchItem({ fieldName, placeholder, fieldIcon, value, onChange }) {
   const searchId = fieldName.toLowerCase();
 
   return (
@@ -13,6 +13,8 @@ function SearchItem({ fieldName, placeholder, fieldIcon }) {
             </label>
             <input
               type="text"
+              value={value}
+              onChange={onChange}
               id={searchId}
               placeholder={placeholder}
               className="border-b-2 border-b-transparent placeholder-slate-900 outline-none transition-all placeholder:text-sm placeholder:font-medium hover:border-b-violet-600 focus:border-b-violet-600 focus:outline-none"

@@ -1,5 +1,5 @@
 import HotelsContainer from "../features/main/hotelsContainer";
-import Search from "../features/main/Search";
+import Search from "../ui/Search";
 
 function Index() {
   return (

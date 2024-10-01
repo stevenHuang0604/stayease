@@ -1,17 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import HomePage from "./pages/HomePage";
 import AppLayout from "./ui/AppLayout";
-import Auth from "./pages/Auth";
-import PageNotFound from "./pages/PageNotFound";
 import Index from "./pages";
-import Bookmarks from "./pages/Bookmarks";
-import MyReservations from "./pages/MyReservations";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Hotels from "./features/hotels/Hotels";
 import HotelDetail, {
   loader as hotelLoader,
-} from "./features/main/HotelDetail";
+} from "./features/hotels/HotelDetail";
+import Bookmarks from "./pages/Bookmarks";
+import MyReservations from "./pages/MyReservations";
+import Auth from "./pages/Auth";
+import PageNotFound from "./pages/PageNotFound";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Index />,
+      },
+      {
+        path: "hotels",
+        element: <Hotels />,
       },
       {
         path: "hotels/:id",

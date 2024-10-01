@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function HotelPreviewCard({ hotel }) {
   return (
-    <div className="max-w-[25%] overflow-hidden rounded-md shadow-md">
+    <div className="max-w-[25%] overflow-hidden rounded-md shadow-md transition-all hover:shadow-xl">
       <img src={hotel.image} alt={hotel.name} />
 
       <div className="flex flex-col p-3">

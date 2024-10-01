@@ -1,7 +1,10 @@
 import supabase from "./supabase";
 
-export async function getHotels() {
-  const { data: hotels, error } = await supabase.from("hotels").select("*");
+export async function getHotelsByDestination(destination) {
+  const { data: hotels, error } = await supabase
+    .from("hotels")
+    .select()
+    .ilike("city", destination);
 
   if (error) {
     console.error(error);

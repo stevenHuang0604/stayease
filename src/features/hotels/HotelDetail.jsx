@@ -1,14 +1,16 @@
 import { useLoaderData } from "react-router-dom";
 import { getHotelById } from "../../services/apiHotel";
-import Search from "./Search";
+import Search from "../../ui/Search";
 import {
   FaBed,
+  FaBookmark,
   FaLocationArrow,
   FaLocationDot,
   FaMoneyBill1Wave,
+  FaRegBookmark,
   FaStar,
 } from "react-icons/fa6";
-import SearchItem from "./SearchItem";
+import SearchItem from "../../ui/SearchItem";
 import { FiCalendar, FiUsers } from "react-icons/fi";
 
 function formatTime(time) {
@@ -32,7 +34,16 @@ function HotelDetail() {
         <div className="mt-8 flex gap-4">
           <div className="flex flex-col gap-4">
             <div className="rounded-md border p-8 shadow-sm">
-              <h1 className="text-3xl font-medium">{hotel.name}</h1>
+              <div className="flex items-center justify-between">
+                <h1 className="text-3xl font-medium">{hotel.name}</h1>
+                <button className="cursor-pointer">
+                  {hotel.id ? (
+                    <FaBookmark className="text-xl text-violet-500" />
+                  ) : (
+                    <FaRegBookmark className="text-xl" />
+                  )}
+                </button>
+              </div>
 
               <div className="mb-2 mt-2 flex gap-3">
                 <div className="flex items-center gap-1 text-sm">
@@ -46,19 +57,19 @@ function HotelDetail() {
                 </div>
               </div>
 
-              <div className="mt-4 h-[1px] w-full bg-slate-300"></div>
+              <div className="mb-6 mt-4 h-[1px] w-full bg-slate-300"></div>
 
-              <p className="mt-6 text-base font-normal text-slate-800">
+              <p className="text-base font-normal text-slate-800">
                 {hotel.description}
               </p>
 
-              <div className="mt-4 flex items-center gap-2 text-base">
+              <div className="mt-6 flex items-center gap-2 text-base">
                 <FaBed className="text-violet-600" />
                 <span className="font-medium">Available Room: </span>
                 {hotel.available_rooms} rooms
               </div>
 
-              <div className="mt-4 flex items-center gap-2 text-base">
+              <div className="mt-2 flex items-center gap-2 text-base">
                 <FaMoneyBill1Wave className="text-violet-600" />
                 <span className="font-medium">Base Price: </span>$
                 {hotel.base_price}
@@ -75,9 +86,9 @@ function HotelDetail() {
             <div className="rounded-md border p-8 shadow-sm">
               <h2 className="text-xl">Space & Rooms</h2>
 
-              <div className="mt-4 h-[1px] w-full bg-slate-300"></div>
+              <div className="mb-6 mt-4 h-[1px] w-full bg-slate-300"></div>
 
-              <div className="mt-4 flex gap-4">
+              <div className="flex gap-4">
                 {Object.entries(hotel.room_types).map(([roomType, details]) => (
                   <div
                     className="rounded-md border p-4 shadow-sm"
