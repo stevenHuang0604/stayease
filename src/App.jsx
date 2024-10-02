@@ -4,7 +4,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import HomePage from "./pages/HomePage";
 import AppLayout from "./ui/AppLayout";
-import Index from "./pages";
+import Index from "./pages/Index";
 import Hotels from "./features/hotels/Hotels";
 import HotelDetail, {
   loader as hotelLoader,
