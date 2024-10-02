@@ -14,13 +14,15 @@ function HotelPreviewCard({ hotel }) {
 
   return (
     <div className="max-w-[25%] overflow-hidden rounded-md shadow-md transition-all hover:shadow-xl">
-      {imageLoaded ? (
-        <img src={hotel.image} alt={hotel.name} />
-      ) : (
-        <div className="bg-slate-500 text-lg font-semibold text-slate-50">
-          Image Loading...
-        </div>
-      )}
+      <div className="h-36">
+        {imageLoaded ? (
+          <img src={hotel.image} alt={hotel.name} />
+        ) : (
+          <div className="h-full bg-slate-500 py-10 text-center text-lg font-semibold text-slate-50">
+            Image Loading...
+          </div>
+        )}
+      </div>
 
       <div className="flex flex-col p-3">
         <span className="text-xs text-slate-400">{hotel.price_range}</span>
