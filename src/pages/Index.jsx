@@ -1,4 +1,4 @@
-import HotelsContainer from "../features/main/hotelsContainer";
+import HotelsContainer from "../features/main/HotelsContainer";
 import Search from "../ui/Search";
 
 function Index() {
