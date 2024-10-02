@@ -8,8 +8,11 @@ import {
   FaStar,
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useUpdateBookmark } from "../bookmarks/useUpdateBookmark";
 
-function HotelListItem({ hotel }) {
+function HotelListItem({ hotel, bookmarks }) {
+  const { updateBookmark } = useUpdateBookmark();
+
   return (
     <div className="flex overflow-hidden rounded-md border shadow-sm">
       <img
@@ -23,8 +26,11 @@ function HotelListItem({ hotel }) {
 
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-medium">{hotel.name}</h1>
-          <button className="cursor-pointer">
-            {hotel.bookmarked ? (
+          <button
+            className="cursor-pointer"
+            onClick={() => updateBookmark(hotel.id)}
+          >
+            {bookmarks?.some((bookmark) => bookmark.hotelId === hotel.id) ? (
               <FaBookmark className="text-xl text-violet-500" />
             ) : (
               <FaRegBookmark className="text-xl" />

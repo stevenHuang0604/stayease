@@ -1,10 +1,26 @@
+import { useEffect, useState } from "react";
 import { FaLocationDot, FaStar } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 function HotelPreviewCard({ hotel }) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // lazy loading image
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => setImageLoaded(true);
+    img.src = hotel.image;
+  }, [hotel.image]);
+
   return (
     <div className="max-w-[25%] overflow-hidden rounded-md shadow-md transition-all hover:shadow-xl">
-      <img src={hotel.image} alt={hotel.name} />
+      {imageLoaded ? (
+        <img src={hotel.image} alt={hotel.name} />
+      ) : (
+        <div className="bg-slate-500 text-lg font-semibold text-slate-50">
+          Image Loading...
+        </div>
+      )}
 
       <div className="flex flex-col p-3">
         <span className="text-xs text-slate-400">{hotel.price_range}</span>

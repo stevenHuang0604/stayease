@@ -2,10 +2,12 @@ import { useHotelsByDestination } from "./useHotelsByDestination";
 import Spinner from "../../ui/Spinner";
 import HotelListItem from "./HotelListItem";
 import { useSearchParams } from "react-router-dom";
+import { useBookmarks } from "../bookmarks/useBookmarks";
 
 function HotelList() {
   const [searchParams] = useSearchParams();
   const { hotels, isLoading } = useHotelsByDestination();
+  const { bookmarks } = useBookmarks();
 
   const destination = searchParams.get("destination");
 
@@ -21,7 +23,11 @@ function HotelList() {
           </h2>
           <div className="mt-6 flex flex-col gap-4">
             {hotels.map((hotel) => (
-              <HotelListItem hotel={hotel} key={hotel.id} />
+              <HotelListItem
+                hotel={hotel}
+                bookmarks={bookmarks}
+                key={hotel.id}
+              />
             ))}
           </div>
         </>

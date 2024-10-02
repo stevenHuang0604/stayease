@@ -12,6 +12,8 @@ import {
 } from "react-icons/fa6";
 import SearchItem from "../../ui/SearchItem";
 import { FiCalendar, FiUsers } from "react-icons/fi";
+import { useBookmarks } from "../bookmarks/useBookmarks";
+import { useUpdateBookmark } from "../bookmarks/useUpdateBookmark";
 
 function formatTime(time) {
   const [hours, minutes] = time.split(":");
@@ -23,6 +25,8 @@ function formatTime(time) {
 
 function HotelDetail() {
   const [hotel] = useLoaderData();
+  const { bookmarks } = useBookmarks();
+  const { updateBookmark } = useUpdateBookmark();
 
   return (
     <main className="px-14 py-14 md:px-16 md:py-16">
@@ -36,8 +40,13 @@ function HotelDetail() {
             <div className="rounded-md border p-8 shadow-sm">
               <div className="flex items-center justify-between">
                 <h1 className="text-3xl font-medium">{hotel.name}</h1>
-                <button className="cursor-pointer">
-                  {hotel.id ? (
+                <button
+                  className="cursor-pointer"
+                  onClick={() => updateBookmark(hotel.id)}
+                >
+                  {bookmarks?.some(
+                    (bookmark) => bookmark.hotelId === hotel.id,
+                  ) ? (
                     <FaBookmark className="text-xl text-violet-500" />
                   ) : (
                     <FaRegBookmark className="text-xl" />

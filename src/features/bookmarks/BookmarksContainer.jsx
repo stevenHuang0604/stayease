@@ -7,13 +7,19 @@ function BookmarksContainer() {
 
   return (
     <div>
-      <h1 className="text-2xl font-medium text-violet-700">My Bookmark</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-medium text-violet-700">My Bookmarks</h1>
+
+        <p className="text-lg">{bookmarks.length} hotels saved</p>
+      </div>
       {isLoading ? (
         <Spinner />
       ) : (
-        bookmarks.map((bookmark) => (
-          <BookmarkItem bookmark={bookmark} key={bookmark.id} />
-        ))
+        <div className="mt-10 grid grid-cols-3 gap-10">
+          {bookmarks.map((bookmark) => (
+            <BookmarkItem bookmark={bookmark} key={bookmark.id} />
+          ))}
+        </div>
       )}
     </div>
   );
