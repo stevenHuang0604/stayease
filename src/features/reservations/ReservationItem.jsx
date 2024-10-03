@@ -59,7 +59,7 @@ function ReservationItem({ reservation }) {
 
       <td>
         <Link
-          to={`${reservation.id}`}
+          to={`reservations/${reservation.id}`}
           className="flex items-center justify-center gap-1 text-violet-500"
         >
           <span>See details</span>
