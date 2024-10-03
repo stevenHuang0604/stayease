@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { getHotelById } from "../../services/apiHotel";
 import Search from "../../ui/Search";
 import {
@@ -14,6 +14,9 @@ import SearchItem from "../../ui/SearchItem";
 import { FiCalendar, FiUsers } from "react-icons/fi";
 import { useBookmarks } from "../bookmarks/useBookmarks";
 import { useUpdateBookmark } from "../bookmarks/useUpdateBookmark";
+import { useState } from "react";
+import { formatDate } from "../../helpers/formatDate";
+import { createReservation } from "../../services/apiReservations";
 
 function formatTime(time) {
   const [hours, minutes] = time.split(":");
@@ -27,6 +30,46 @@ function HotelDetail() {
   const [hotel] = useLoaderData();
   const { bookmarks } = useBookmarks();
   const { updateBookmark } = useUpdateBookmark();
+  const [checkInDate, setCheckInDate] = useState("");
+  const [checkOutDate, setCheckOutDate] = useState("");
+  const [guests, setGuests] = useState(2);
+  const [rooms, setRooms] = useState(1);
+
+  const navigate = useNavigate();
+
+  function handleCheckInDateChange(date) {
+    setCheckInDate(formatDate(date));
+  }
+
+  function handleCheckOutDateChange(date) {
+    setCheckOutDate(formatDate(date));
+  }
+
+  function handleGuestsChange(newGuests) {
+    setGuests(newGuests);
+  }
+
+  function handleRoomsChange(newRooms) {
+    setRooms(newRooms);
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (checkInDate && checkOutDate) {
+      const newReservation = {
+        createdAt: new Date().toISOString(),
+        check_in_date: checkInDate,
+        check_out_date: checkOutDate,
+        rooms,
+        guests,
+        hotelId: hotel.id,
+      };
+
+      await createReservation(newReservation);
+      navigate("/app/reservations");
+    }
+  }
 
   return (
     <main className="px-14 py-14 md:px-16 md:py-16">
@@ -130,24 +173,42 @@ function HotelDetail() {
             </div>
 
             <div className="rounded-md border p-8 shadow-sm">
-              <form className="flex flex-col gap-4">
+              <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                 <div className="flex flex-col gap-4">
                   <SearchItem
                     fieldName="Check in"
                     placeholder="Thu, Sep 26"
                     fieldIcon={<FiCalendar className="h-6 w-6 text-lg" />}
+                    value={checkInDate}
+                    onChange={handleCheckInDateChange}
+                    type="date"
                   />
 
                   <SearchItem
                     fieldName="Check out"
                     placeholder="Fri, Sep 27"
                     fieldIcon={<FiCalendar className="h-6 w-6 text-lg" />}
+                    value={checkOutDate}
+                    onChange={handleCheckOutDateChange}
+                    type="date"
                   />
 
                   <SearchItem
-                    fieldName="Guests and rooms"
-                    placeholder="2 Guests, 1 Room"
+                    fieldName="Guests"
+                    placeholder="2 Guests"
                     fieldIcon={<FiUsers className="h-6 w-6 text-lg" />}
+                    value={guests}
+                    onChange={handleGuestsChange}
+                    type="number"
+                  />
+
+                  <SearchItem
+                    fieldName="Rooms"
+                    placeholder="1 Room"
+                    fieldIcon={<FiUsers className="h-6 w-6 text-lg" />}
+                    value={rooms}
+                    onChange={handleRoomsChange}
+                    type="number"
                   />
                 </div>
 

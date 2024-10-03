@@ -15,6 +15,7 @@ export default {
       gridTemplateColumns: {
         "auto-fit": "repeat(auto-fit, minmax(250px, 1fr))",
         testimonial: "repeat(3,minmax(0,450px))",
+        table: "1.4fr 1.4fr 2.4fr 1fr 1fr 1.6fr 8rem",
       },
       BorderRadius: {
         circle: "50%",

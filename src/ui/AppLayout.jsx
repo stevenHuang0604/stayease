@@ -4,7 +4,7 @@ import { HiOutlineBookmark, HiOutlineCalendarDays } from "react-icons/hi2";
 
 function AppLayout() {
   return (
-    <div>
+    <div className="h-screen">
       <header className="mx-auto max-w-full border-b-[1px] bg-violet-50 bg-opacity-30">
         <div className="flex h-20 items-center px-8 py-3">
           <div className="h-full">

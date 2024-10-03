@@ -14,6 +14,9 @@ import MyReservations from "./pages/MyReservations";
 import Auth from "./pages/Auth";
 import PageNotFound from "./pages/PageNotFound";
 import { Toaster } from "react-hot-toast";
+import ReservationDetail, {
+  loader as reservationLoader,
+} from "./features/reservations/ReservationDetail";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -52,6 +55,11 @@ const router = createBrowserRouter([
       {
         path: "reservations",
         element: <MyReservations />,
+      },
+      {
+        path: "reservations/:id",
+        element: <ReservationDetail />,
+        loader: reservationLoader,
       },
     ],
   },

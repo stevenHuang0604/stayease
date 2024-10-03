@@ -21,8 +21,8 @@ function Search() {
   }
 
   return (
-    <div className="mx-auto max-w-full shadow-lg lg:w-max">
-      <div className="border-1 w-full rounded-lg bg-violet-200 px-2 py-2">
+    <div className="mx-auto max-w-full lg:w-max">
+      <div className="border-1 w-full rounded-lg px-2 py-2">
         <form
           className="flex flex-col items-center justify-center gap-4 lg:flex-row lg:gap-2"
           onSubmit={handleSubmit}

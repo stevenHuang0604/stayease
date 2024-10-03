@@ -7,7 +7,7 @@ export function useHotelById(hotelId) {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["bookmarks-hotel", hotelId],
+    queryKey: ["hotel", hotelId],
     queryFn: () => getHotelById(hotelId),
   });
 
