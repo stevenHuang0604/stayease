@@ -38,8 +38,19 @@ function ReservationItem({ reservation }) {
         </span>
       </td>
       <td>{reservation.guests} guests</td>
-      <td>{reservation.rooms} rooms</td>
-      <td>${hotel.base_price * reservation.rooms}</td>
+      <td>
+        {Object.values(reservation.rooms).reduce(
+          (acc, cur) => acc + Number(cur),
+          0,
+        )}{" "}
+        rooms
+      </td>
+      <td>
+        $
+        {Object.entries(reservation.rooms)
+          .map(([roomType, order]) => hotel.room_types[roomType].price * order)
+          .reduce((acc, cur) => acc + cur, 0)}
+      </td>
       <td>
         <Link
           to={`${reservation.id}`}

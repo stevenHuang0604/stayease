@@ -52,7 +52,13 @@ function ReservationDetail() {
 
             <div className="font-base flex items-center gap-4 py-2 text-lg font-medium">
               <HiOutlineBuildingStorefront className="h-5 w-5 text-violet-500" />
-              <p>{reservation.rooms} rooms</p>
+              <p>
+                {Object.values(reservation.rooms).reduce(
+                  (acc, cur) => acc + cur,
+                  0,
+                )}{" "}
+                rooms
+              </p>
             </div>
 
             <div className="mb-auto mt-5 flex items-center gap-4 pb-4 text-base text-zinc-600">
@@ -63,13 +69,29 @@ function ReservationDetail() {
             </div>
 
             <div className="mt-6 rounded bg-green-100 px-8 py-4 text-green-700">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 text-xl">
                 <span className="flex items-center gap-2 font-medium">
                   <HiOutlineCurrencyDollar className="h-6 w-6" />
                   Total price
                 </span>
-                ${hotel.base_price * reservation.rooms} (${hotel.base_price}{" "}
-                each for {reservation.rooms} rooms)
+                $
+                {Object.entries(reservation.rooms)
+                  .map(
+                    ([roomType, order]) =>
+                      hotel.room_types[roomType].price * order,
+                  )
+                  .reduce((acc, cur) => acc + cur, 0)}
+              </div>
+
+              <div className="flex flex-col gap-1 py-2">
+                {Object.entries(reservation.rooms).map(([roomType, detail]) => (
+                  <div className="font-medium" key={roomType}>
+                    <span>
+                      {roomType} (${hotel.room_types[roomType].price}/room):{" "}
+                      {detail} room ordered
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </section>

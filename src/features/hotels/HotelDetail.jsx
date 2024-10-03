@@ -32,8 +32,8 @@ function HotelDetail() {
   const { updateBookmark } = useUpdateBookmark();
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
-  const [guests, setGuests] = useState(2);
-  const [rooms, setRooms] = useState(1);
+  const [guests, setGuests] = useState(1);
+  const [rooms, setRooms] = useState({});
 
   const navigate = useNavigate();
 
@@ -56,7 +56,9 @@ function HotelDetail() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (checkInDate && checkOutDate) {
+    const roomLength = Object.values(rooms).reduce((acc, cur) => acc + cur, 0);
+
+    if (checkInDate && checkOutDate && roomLength) {
       const newReservation = {
         createdAt: new Date().toISOString(),
         check_in_date: checkInDate,
@@ -177,7 +179,7 @@ function HotelDetail() {
                 <div className="flex flex-col gap-4">
                   <SearchItem
                     fieldName="Check in"
-                    placeholder="Thu, Sep 26"
+                    placeholder="Select check-in day"
                     fieldIcon={<FiCalendar className="h-6 w-6 text-lg" />}
                     value={checkInDate}
                     onChange={handleCheckInDateChange}
@@ -186,7 +188,7 @@ function HotelDetail() {
 
                   <SearchItem
                     fieldName="Check out"
-                    placeholder="Fri, Sep 27"
+                    placeholder="Select check-out day"
                     fieldIcon={<FiCalendar className="h-6 w-6 text-lg" />}
                     value={checkOutDate}
                     onChange={handleCheckOutDateChange}
@@ -199,16 +201,17 @@ function HotelDetail() {
                     fieldIcon={<FiUsers className="h-6 w-6 text-lg" />}
                     value={guests}
                     onChange={handleGuestsChange}
-                    type="number"
+                    type="guest"
                   />
 
                   <SearchItem
                     fieldName="Rooms"
-                    placeholder="1 Room"
+                    placeholder="Choose room type"
                     fieldIcon={<FiUsers className="h-6 w-6 text-lg" />}
                     value={rooms}
                     onChange={handleRoomsChange}
-                    type="number"
+                    type="room"
+                    hotel={hotel}
                   />
                 </div>
 
