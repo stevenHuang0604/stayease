@@ -6,9 +6,9 @@ function BookmarksContainer() {
   const { bookmarks, isLoading } = useBookmarks();
 
   return (
-    <div>
+    <div className="p-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-medium text-violet-700">My Bookmarks</h1>
+        <h1 className="text-3xl font-semibold text-violet-700">My Bookmarks</h1>
 
         <p className="text-lg">{bookmarks?.length} hotels saved</p>
       </div>

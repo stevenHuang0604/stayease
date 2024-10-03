@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 import defaultTheme from "tailwindcss/defaultTheme";
+import tailwind3dTransforms from "@xpd/tailwind-3dtransforms";
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -22,4 +23,5 @@ export default {
       },
     },
   },
+  plugins: [tailwind3dTransforms],
 };

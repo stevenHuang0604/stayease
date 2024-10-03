@@ -2,19 +2,33 @@ import { useQuery } from "@tanstack/react-query";
 import { getReservations } from "../../services/apiReservations";
 import Spinner from "../../ui/Spinner";
 import ReservationItem from "./ReservationItem";
+import { fake_data } from "../../fake_data/fake_data";
 
-function ReservationsContainer() {
-  const { data: reservations, isLoading } = useQuery({
+function ReservationsContainer({ page = "reservations" }) {
+  let reservations;
+  const { data, isLoading } = useQuery({
     queryKey: ["reservations"],
     queryFn: getReservations,
   });
 
   if (isLoading) return <Spinner />;
 
+  console.log(data);
+
+  if (page === "home") {
+    reservations = fake_data;
+  } else if (page === "app") {
+    reservations = data.slice(-3);
+  } else {
+    reservations = data;
+  }
+
+  console.log(reservations);
+
   return (
-    <>
+    <div className="p-8">
       <h1 className="mb-8 text-3xl font-semibold leading-snug text-violet-700">
-        All Reservations
+        {page === "app" ? "Recent Reservations" : "All Reservations"}
       </h1>
       <div className="overflow-hidden rounded-lg border border-slate-300">
         <table className="w-full text-sm">
@@ -37,7 +51,7 @@ function ReservationsContainer() {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 }
 

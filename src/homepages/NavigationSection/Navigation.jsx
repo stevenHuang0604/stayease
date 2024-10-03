@@ -16,7 +16,7 @@ function Navigation() {
           </Link>
         </div>
         <ul className="ml-auto flex items-center gap-4 text-lg">
-          <li>
+          {/* <li>
             <Button variant="default" color="primary" size="medium" to="/app">
               Sign In
             </Button>
@@ -30,7 +30,7 @@ function Navigation() {
             >
               Sign Up
             </Button>
-          </li>
+          </li> */}
           <li>
             <ModeButton />
           </li>
