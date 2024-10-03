@@ -1,8 +1,4 @@
-import {
-  formatDate,
-  formatTime,
-  subtractDates,
-} from "../../helpers/formatDate";
+import { formatDate, subtractDates } from "../../helpers/formatDate";
 import { useHotelById } from "../hotels/useHotelById";
 import Spinner from "../../ui/Spinner";
 import { Link } from "react-router-dom";

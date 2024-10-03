@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import { formatDate } from "../helpers/formatDate";
 import "react-datepicker/dist/react-datepicker.css";
@@ -158,7 +158,7 @@ function SearchItem({
         <div className="bottom-100 absolute left-0 z-10 mt-1 w-full">
           <div className="flex flex-col gap-2 rounded-lg border border-slate-300 bg-white p-4 shadow-lg">
             <div className="flex flex-col items-center justify-between gap-4">
-              {Object.entries(hotel.room_types).map(([roomType, detail]) => (
+              {Object.entries(hotel.room_types).map(([roomType]) => (
                 <div
                   className="flex w-full items-center justify-between"
                   key={roomType}
