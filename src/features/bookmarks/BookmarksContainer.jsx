@@ -6,7 +6,7 @@ function BookmarksContainer() {
   const { bookmarks, isLoading } = useBookmarks();
 
   return (
-    <div className="p-8">
+    <div className="p-4 lg:p-8">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-semibold text-violet-700">My Bookmarks</h1>
 
@@ -15,7 +15,7 @@ function BookmarksContainer() {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="mt-10 grid grid-cols-3 gap-10">
+        <div className="mt-10 grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3 lg:gap-10">
           {bookmarks.map((bookmark) => (
             <BookmarkItem bookmark={bookmark} key={bookmark.id} />
           ))}

@@ -3,10 +3,13 @@ import { useHotelById } from "../hotels/useHotelById";
 import Spinner from "../../ui/Spinner";
 import { Link } from "react-router-dom";
 import { HiOutlineArrowRight } from "react-icons/hi2";
+import { useMediaQuery } from "react-responsive";
 
 function ReservationItem({ reservation }) {
   const { hotels, isLoading } = useHotelById(reservation.hotelId);
-
+  const md = useMediaQuery({
+    query: "(min-width: 768px)",
+  });
   // wrap Spinner inside the tr to fix '<div> cannot appear as a child of <tbody>' error
   if (isLoading)
     return (
@@ -19,7 +22,7 @@ function ReservationItem({ reservation }) {
   const hotel = hotels[0];
 
   return (
-    <tr className="grid-cols-table grid items-center gap-6 border-b border-b-slate-200 px-6 py-3 text-center text-base font-medium text-slate-600 last:border-b-0">
+    <tr className="md:grid-cols-table grid-cols-md grid items-center gap-6 border-b border-b-slate-200 px-3 py-3 text-center text-base font-medium text-slate-600 last:border-b-0 lg:px-6">
       <td>{hotel.country}</td>
       <td>{hotel.city}</td>
       <td className="flex flex-col gap-[]">
@@ -33,27 +36,34 @@ function ReservationItem({ reservation }) {
           {formatDate(new Date(reservation.check_out_date).toISOString())}
         </span>
       </td>
-      <td>{reservation.guests} guests</td>
-      <td>
-        {Object.values(reservation.rooms).reduce(
-          (acc, cur) => acc + Number(cur),
-          0,
-        )}{" "}
-        rooms
-      </td>
-      <td>
-        $
-        {Object.entries(reservation.rooms)
-          .map(([roomType, order]) => hotel.room_types[roomType].price * order)
-          .reduce((acc, cur) => acc + cur, 0)}
-      </td>
+      {md && (
+        <>
+          <td>{reservation.guests} guests</td>
+          <td>
+            {Object.values(reservation.rooms).reduce(
+              (acc, cur) => acc + Number(cur),
+              0,
+            )}{" "}
+            rooms
+          </td>
+          <td>
+            $
+            {Object.entries(reservation.rooms)
+              .map(
+                ([roomType, order]) => hotel.room_types[roomType].price * order,
+              )
+              .reduce((acc, cur) => acc + cur, 0)}
+          </td>
+        </>
+      )}
+
       <td>
         <Link
           to={`${reservation.id}`}
-          className="flex items-center gap-1 text-violet-500"
+          className="flex items-center justify-center gap-1 text-violet-500"
         >
-          See details
-          <span>
+          <span>See details</span>
+          <span className="hidden lg:block">
             <HiOutlineArrowRight />
           </span>
         </Link>

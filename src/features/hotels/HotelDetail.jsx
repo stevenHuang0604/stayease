@@ -80,7 +80,7 @@ function HotelDetail() {
       <div className="mx-auto mt-16 flex flex-col items-center">
         <img src={hotel.image} alt={hotel.name} className="w-[44rem]" />
 
-        <div className="mt-8 flex gap-4">
+        <div className="mt-8 flex flex-col gap-4 lg:flex-row">
           <div className="flex flex-col gap-4">
             <div className="rounded-md border p-8 shadow-sm">
               <div className="flex items-center justify-between">
@@ -162,7 +162,7 @@ function HotelDetail() {
           </div>
 
           <div className="flex basis-1/3 flex-col gap-4">
-            <div className="flex justify-between gap-2 rounded-md border p-8 shadow-sm">
+            <div className="flex gap-8 rounded-md border p-8 shadow-sm lg:justify-between">
               <div>
                 <h3 className="font-medium">Check-in:</h3>
                 <p>{`${formatTime(hotel.check_in_time)}`}</p>

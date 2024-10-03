@@ -6,7 +6,7 @@ function HotelsContainer() {
   const { popularHotels, isLoading } = usePopularHotels();
 
   return (
-    <div className="mt-8 p-8">
+    <div className="mt-8 p-0 md:p-8">
       <h1 className="mb-6 text-3xl font-semibold text-violet-700">
         Popular hotels
       </h1>
@@ -14,7 +14,7 @@ function HotelsContainer() {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="flex justify-center gap-8">
+        <div className="flex justify-center gap-4 md:gap-8">
           {popularHotels.map((hotel) => (
             <HotelPreviewCard hotel={hotel} key={hotel.id} />
           ))}

@@ -22,7 +22,7 @@ function ReservationDetail() {
     <main className="px-14 py-14 md:px-16 md:py-16">
       <div className="mx-auto flex w-[80%] flex-col gap-8">
         <div className="overflow-hidden rounded-lg shadow-md">
-          <div className="flex items-center justify-between bg-violet-500 px-10 py-5 text-lg font-medium text-slate-200">
+          <div className="flex items-center justify-between bg-violet-500 px-6 py-5 text-base font-medium text-slate-200 md:px-10 md:text-lg">
             <div className="flex items-center gap-4 text-xl font-semibold">
               <HiOutlineHomeModern className="h-8 w-8" />
               <p>10 nights in {hotel.name}</p>
@@ -35,7 +35,7 @@ function ReservationDetail() {
             </p>
           </div>
 
-          <section className="px-10 pb-3 pt-8">
+          <section className="px-6 pb-3 pt-8 md:px-10">
             <div className="flex items-center gap-4 py-2 text-base text-blue-600">
               <FaLocationDot className="flex h-5 w-5 items-center justify-center" />
               <span>{`${hotel.city}, ${hotel.country}`}</span>
@@ -96,7 +96,7 @@ function ReservationDetail() {
             </div>
           </section>
 
-          <footer className="px-10 py-4 text-right text-xs text-slate-400">
+          <footer className="px-6 py-4 text-right text-xs text-slate-400 md:px-10">
             <p>Booked {formatTime(reservation.createdAt)}</p>
           </footer>
         </div>

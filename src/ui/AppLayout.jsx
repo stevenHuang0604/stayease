@@ -29,7 +29,7 @@ function AppLayout() {
                   <HiOutlineCalendarDays
                     className={`${isActive ? "text-violet-700" : "text-slate-400"}`}
                   />
-                  <span className="text-base font-semibold text-slate-600">
+                  <span className="hidden text-base font-semibold text-slate-600 md:block">
                     My Reservation
                   </span>
                 </>
@@ -48,7 +48,7 @@ function AppLayout() {
                   <HiOutlineBookmark
                     className={`${isActive ? "text-violet-700" : "text-slate-400"}`}
                   />
-                  <span className="text-base font-semibold text-slate-600">
+                  <span className="hidden text-base font-semibold text-slate-600 md:block">
                     Bookmarks
                   </span>
                 </>

@@ -14,11 +14,11 @@ function HotelListItem({ hotel, bookmarks }) {
   const { updateBookmark } = useUpdateBookmark();
 
   return (
-    <div className="flex overflow-hidden rounded-md border shadow-sm">
+    <div className="flex flex-col overflow-hidden rounded-md border shadow-sm md:flex-row">
       <img
         src={hotel.image}
         alt={hotel.name}
-        className="w-[35%] object-cover"
+        className="object-cover md:w-[35%]"
       />
 
       <div className="grow p-6 pt-4">
@@ -67,13 +67,15 @@ function HotelListItem({ hotel, bookmarks }) {
           <span className="font-medium">Base Price: </span>${hotel.base_price}
         </div>
 
-        <div className="mt-5 flex items-center gap-1 text-sm text-zinc-600">
-          <FaLocationArrow />
-          <span className="border-b border-b-slate-800">{hotel.address}</span>
+        <div className="mt-5 flex flex-col items-start justify-center gap-4 text-sm text-zinc-600 lg:flex-row lg:items-center">
+          <div className="flex items-center gap-1">
+            <FaLocationArrow />
+            <span className="border-b border-b-slate-800">{hotel.address}</span>
+          </div>
 
           <Link
             to={`${hotel.id}`}
-            className="ml-auto rounded-md bg-violet-600 px-4 py-2 text-center font-medium text-slate-50"
+            className="rounded-md bg-violet-600 px-4 py-2 text-center font-medium text-slate-50 lg:ml-auto"
           >
             Check details
           </Link>
