@@ -4,7 +4,7 @@ import { ErrorBoundary } from "react-error-boundary";
 
 import App from "./App.jsx";
 import ErrorFallback from "./ui/ErrorFallback.jsx";
-// import store from "../store.js";
+
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   FaBed,
   FaBookmark,
@@ -7,7 +8,6 @@ import {
   FaStar,
 } from "react-icons/fa6";
 import { useHotelById } from "../hotels/useHotelById";
-import { Link } from "react-router-dom";
 import Spinner from "../../ui/Spinner";
 import { useUpdateBookmark } from "./useUpdateBookmark";
 

@@ -1,22 +1,88 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import {
   HiOutlineBuildingStorefront,
   HiOutlineCurrencyDollar,
   HiOutlineHomeModern,
   HiOutlineUsers,
+  HiPencil,
 } from "react-icons/hi2";
 import { FaLocationArrow, FaLocationDot } from "react-icons/fa6";
+
 import { getReservationById } from "../../services/apiReservations";
-import { useHotelById } from "../hotels/useHotelById";
+
 import Spinner from "../../ui/Spinner";
 import { formatTime, formatDate } from "../../helpers/formatDate";
+import Button from "../../ui/Button";
+import { useEffect, useState } from "react";
+import SearchItem from "../../ui/SearchItem";
+import { FiCalendar, FiUsers } from "react-icons/fi";
+
+import { useUpdateReservation } from "./useUpdateReservation";
 
 function ReservationDetail() {
   const [reservation] = useLoaderData();
-  const { hotels, isLoading } = useHotelById(reservation.hotelId);
+  const { mutate: updateReservation, isLoading: isUpdating } =
+    useUpdateReservation(reservation);
 
-  if (isLoading) return <Spinner />;
-  const hotel = hotels[0];
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [checkInDate, setCheckInDate] = useState("");
+  const [checkOutDate, setCheckOutDate] = useState("");
+  const [guests, setGuests] = useState(1);
+  const [rooms, setRooms] = useState({});
+
+  useEffect(() => {
+    if (reservation) {
+      setCheckInDate(reservation.check_in_date);
+      setCheckOutDate(reservation.check_out_date);
+      setGuests(reservation.guests);
+      setRooms(reservation.rooms);
+    }
+  }, [reservation]);
+
+  if (isUpdating) return <Spinner />;
+  const hotel = reservation.hotels;
+
+  function handleCheckInDateChange(date) {
+    setCheckInDate(formatDate(date));
+  }
+
+  function handleCheckOutDateChange(date) {
+    setCheckOutDate(formatDate(date));
+  }
+
+  function handleGuestsChange(newGuests) {
+    setGuests(newGuests);
+  }
+
+  function handleRoomsChange(newRooms) {
+    setRooms(newRooms);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    setIsEditModalOpen(false);
+
+    const roomLength = Object.values(rooms).reduce((acc, cur) => acc + cur, 0);
+
+    if (checkInDate && checkOutDate && roomLength) {
+      const newReservation = {
+        createdAt: new Date().toISOString(),
+        check_in_date: checkInDate,
+        check_out_date: checkOutDate,
+        rooms,
+        guests,
+        hotelId: hotel.id,
+      };
+      console.log(newReservation);
+
+      updateReservation({ id: reservation.id, newReservation });
+    }
+  }
+
+  function handleToggleModal() {
+    setIsEditModalOpen((prev) => !prev);
+  }
 
   return (
     <main className="px-14 py-14 md:px-16 md:py-16">
@@ -96,7 +162,21 @@ function ReservationDetail() {
             </div>
           </section>
 
-          <footer className="px-6 py-4 text-right text-xs text-slate-400 md:px-10">
+          <footer className="flex items-center justify-between px-6 py-4 text-xs text-slate-400 md:px-10">
+            <Button
+              variant="outline"
+              color="primary"
+              size="medium"
+              onClick={handleToggleModal}
+            >
+              <div className="flex items-center justify-center gap-2">
+                <span>
+                  <HiPencil />
+                </span>
+                <span className="hidden lg:block">Edit</span>
+              </div>
+            </Button>
+
             <p>Booked {formatTime(reservation.createdAt)}</p>
           </footer>
         </div>
@@ -109,6 +189,56 @@ function ReservationDetail() {
             Hotel details
           </Link>
         </div>
+
+        {isEditModalOpen && (
+          <div className="mx-auto w-[60%] rounded-md border border-slate-200 p-8">
+            <h3 className="pb-4 text-lg font-medium">Editing ...</h3>
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+              <div className="flex flex-col gap-4">
+                <SearchItem
+                  fieldName="Check in"
+                  placeholder="Select check-in day"
+                  fieldIcon={<FiCalendar className="h-6 w-6 text-lg" />}
+                  value={checkInDate}
+                  onChange={handleCheckInDateChange}
+                  type="date"
+                />
+
+                <SearchItem
+                  fieldName="Check out"
+                  placeholder="Select check-out day"
+                  fieldIcon={<FiCalendar className="h-6 w-6 text-lg" />}
+                  value={checkOutDate}
+                  onChange={handleCheckOutDateChange}
+                  type="date"
+                />
+
+                <SearchItem
+                  fieldName="Guests"
+                  placeholder="2 Guests"
+                  fieldIcon={<FiUsers className="h-6 w-6 text-lg" />}
+                  value={guests}
+                  onChange={handleGuestsChange}
+                  type="guest"
+                />
+
+                <SearchItem
+                  fieldName="Rooms"
+                  placeholder="Choose room type"
+                  fieldIcon={<FiUsers className="h-6 w-6 text-lg" />}
+                  value={rooms}
+                  onChange={handleRoomsChange}
+                  type="room"
+                  hotel={hotel}
+                />
+              </div>
+
+              <button className="rounded-md bg-violet-600 py-3 text-lg font-medium text-slate-200">
+                Confirm Editing
+              </button>
+            </form>
+          </div>
+        )}
       </div>
     </main>
   );

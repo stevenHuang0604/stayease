@@ -1,7 +1,8 @@
+import { useLocation, useSearchParams } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+
 import { toggleBookmark } from "../../services/apiBookmarks";
-import { useLocation, useSearchParams } from "react-router-dom";
 
 export function useUpdateHotel() {
   const queryClient = useQueryClient();

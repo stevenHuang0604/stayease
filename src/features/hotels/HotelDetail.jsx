@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { getHotelById } from "../../services/apiHotel";
-import Search from "../../ui/Search";
+import { FiCalendar, FiUsers } from "react-icons/fi";
 import {
   FaBed,
   FaBookmark,
@@ -10,11 +10,12 @@ import {
   FaRegBookmark,
   FaStar,
 } from "react-icons/fa6";
-import SearchItem from "../../ui/SearchItem";
-import { FiCalendar, FiUsers } from "react-icons/fi";
+
+import Search from "../../ui/Search";
+import { getHotelById } from "../../services/apiHotel";
 import { useBookmarks } from "../bookmarks/useBookmarks";
+import SearchItem from "../../ui/SearchItem";
 import { useUpdateBookmark } from "../bookmarks/useUpdateBookmark";
-import { useState } from "react";
 import { formatDate } from "../../helpers/formatDate";
 import { createReservation } from "../../services/apiReservations";
 

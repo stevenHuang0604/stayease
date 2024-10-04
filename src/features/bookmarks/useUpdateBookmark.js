@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { toggleBookmark } from "../../services/apiBookmarks";
 import toast from "react-hot-toast";
+
+import { toggleBookmark } from "../../services/apiBookmarks";
 
 export function useUpdateBookmark() {
   const queryClient = useQueryClient();

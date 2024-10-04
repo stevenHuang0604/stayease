@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { getPopularHotels } from "../../services/apiHotel";
 
 export function usePopularHotels() {

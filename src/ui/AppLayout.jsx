@@ -1,6 +1,11 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
+import {
+  HiOutlineBookmark,
+  HiOutlineCalendarDays,
+  HiOutlineHome,
+} from "react-icons/hi2";
+
 import Logo from "../homepages/NavigationSection/Logo";
-import { HiOutlineBookmark, HiOutlineCalendarDays } from "react-icons/hi2";
 
 function AppLayout() {
   return (
@@ -8,7 +13,10 @@ function AppLayout() {
       <header className="mx-auto max-w-full border-b-[1px] bg-violet-50 bg-opacity-30">
         <div className="flex h-20 items-center px-8 py-3">
           <div className="h-full">
-            <Link to="/app" className="flex h-full items-center gap-4">
+            <Link
+              to={window.location.origin}
+              className="flex h-full items-center gap-4"
+            >
               <Logo />
               <div className="font-Agbalumo text-2xl font-bold tracking-wide text-violet-600">
                 StayEase
@@ -16,6 +24,26 @@ function AppLayout() {
             </Link>
           </div>
           <div className="ml-auto flex items-center gap-4 text-lg">
+            <NavLink
+              to="/app"
+              end
+              className={({ isActive }) =>
+                `flex items-center gap-2 rounded-md px-3 py-2 transition-all ${
+                  isActive ? "bg-violet-200" : "hover:bg-violet-100"
+                }`
+              }
+            >
+              {({ isActive }) => (
+                <>
+                  <HiOutlineHome
+                    className={`${isActive ? "text-violet-700" : "text-slate-400"}`}
+                  />
+                  <span className="hidden text-base font-semibold text-slate-600 md:block">
+                    Home
+                  </span>
+                </>
+              )}
+            </NavLink>
             <NavLink
               to="reservations"
               className={({ isActive }) =>

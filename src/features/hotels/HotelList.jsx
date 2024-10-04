@@ -1,7 +1,8 @@
+import { useSearchParams } from "react-router-dom";
+
 import { useHotelsByDestination } from "./useHotelsByDestination";
 import Spinner from "../../ui/Spinner";
 import HotelListItem from "./HotelListItem";
-import { useSearchParams } from "react-router-dom";
 import { useBookmarks } from "../bookmarks/useBookmarks";
 
 function HotelList() {

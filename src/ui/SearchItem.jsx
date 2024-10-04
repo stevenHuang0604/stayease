@@ -1,8 +1,9 @@
 import { useState } from "react";
-import DatePicker from "react-datepicker";
-import { formatDate } from "../helpers/formatDate";
-import "react-datepicker/dist/react-datepicker.css";
 import { FaMinus, FaPlus } from "react-icons/fa6";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+import { formatDate } from "../helpers/formatDate";
 
 function SearchItem({
   fieldName,

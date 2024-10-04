@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { getHotelById } from "../../services/apiHotel";
 
 export function useHotelById(hotelId) {

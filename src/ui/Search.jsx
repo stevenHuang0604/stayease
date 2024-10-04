@@ -1,7 +1,8 @@
-import { FiCalendar, FiSearch, FiUsers } from "react-icons/fi";
-import SearchItem from "./SearchItem";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FiSearch } from "react-icons/fi";
+
+import SearchItem from "./SearchItem";
 
 function Search() {
   const [destination, setDestination] = useState("");

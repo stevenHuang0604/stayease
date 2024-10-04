@@ -1,9 +1,9 @@
 import supabase from "./supabase";
 
 export async function getReservationById(id) {
-  const { data: reservation, error } = await supabase
+  const { data, error } = await supabase
     .from("reservations")
-    .select("*")
+    .select("*, hotels(*)")
     .eq("id", id);
 
   if (error) {
@@ -11,13 +11,13 @@ export async function getReservationById(id) {
     throw new Error("Hotel could not be loaded");
   }
 
-  return reservation;
+  return data;
 }
 
 export async function getReservations() {
   const { data: reservations, error } = await supabase
     .from("reservations")
-    .select("*");
+    .select("*, hotels(*)");
 
   if (error) {
     console.error(error);
@@ -38,6 +38,26 @@ export async function createReservation(reservation) {
   }
 }
 
-export async function deleteReservation() {}
+export async function deleteReservationById(id) {
+  const { error } = await supabase.from("reservations").delete().eq("id", id);
 
-export async function udpateReservation() {}
+  if (error) {
+    console.error(error);
+    throw new Error("Reservation could not be deleted");
+  }
+}
+
+export async function udpateReservation(id, newReservation) {
+  const { data, error } = await supabase
+    .from("reservations")
+    .update({ ...newReservation })
+    .eq("id", id)
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Cabins could not be updated");
+  }
+
+  return data;
+}
