@@ -48,6 +48,7 @@ export async function deleteReservationById(id) {
 }
 
 export async function udpateReservation(id, newReservation) {
+  console.log(id, newReservation);
   const { data, error } = await supabase
     .from("reservations")
     .update({ ...newReservation })
@@ -56,7 +57,7 @@ export async function udpateReservation(id, newReservation) {
 
   if (error) {
     console.error(error);
-    throw new Error("Cabins could not be updated");
+    throw new Error("Reservation could not be updated");
   }
 
   return data;

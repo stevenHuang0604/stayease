@@ -18,11 +18,16 @@ import SearchItem from "../../ui/SearchItem";
 import { FiCalendar, FiUsers } from "react-icons/fi";
 
 import { useUpdateReservation } from "./useUpdateReservation";
+import { useReservationById } from "./useReservationById";
 
 function ReservationDetail() {
-  const [reservation] = useLoaderData();
+  const { data, isLoading: isFetching } = useReservationById();
+  // const [reservation] = useLoaderData();
+  const reservation = data === undefined ? {} : data[0];
+  console.log(reservation);
+
   const { mutate: updateReservation, isLoading: isUpdating } =
-    useUpdateReservation(reservation);
+    useUpdateReservation();
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [checkInDate, setCheckInDate] = useState("");
@@ -39,8 +44,8 @@ function ReservationDetail() {
     }
   }, [reservation]);
 
-  if (isUpdating) return <Spinner />;
-  const hotel = reservation.hotels;
+  if (isFetching || isUpdating) return <Spinner />;
+  const hotel = reservation?.hotels;
 
   function handleCheckInDateChange(date) {
     setCheckInDate(formatDate(date));
@@ -76,7 +81,7 @@ function ReservationDetail() {
       };
       console.log(newReservation);
 
-      updateReservation({ id: reservation.id, newReservation });
+      updateReservation({ reservationId: reservation.id, newReservation });
     }
   }
 
