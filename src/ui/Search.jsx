@@ -36,24 +36,6 @@ function Search() {
             onChange={handleChange}
           />
 
-          {/* <SearchItem
-            fieldName="Check in"
-            placeholder="Thu, Sep 26"
-            fieldIcon={<FiCalendar className="h-6 w-6 text-lg" />}
-          />
-
-          <SearchItem
-            fieldName="Check out"
-            placeholder="Fri, Sep 27"
-            fieldIcon={<FiCalendar className="h-6 w-6 text-lg" />}
-          />
-
-          <SearchItem
-            fieldName="Guests and rooms"
-            placeholder="2 Guests, 1 Room"
-            fieldIcon={<FiUsers className="h-6 w-6 text-lg" />}
-          /> */}
-
           <button className="h-14 w-full rounded-lg border border-slate-300 bg-violet-600 px-4 py-1 text-lg font-medium text-slate-50 hover:bg-violet-800 lg:w-auto dark:border-slate-700 dark:bg-violet-400 dark:text-slate-950 dark:hover:bg-violet-200">
             Search
           </button>

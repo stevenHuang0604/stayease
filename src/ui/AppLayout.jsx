@@ -12,16 +12,16 @@ function AppLayout() {
   return (
     <div className="flex h-screen flex-col">
       <header className="mx-auto w-full border-b-[1px] bg-violet-50 bg-opacity-30 dark:bg-violet-950">
-        <div className="flex h-20 items-center px-8 py-3">
+        <nav className="flex h-20 items-center px-8 py-3">
           <div className="h-full">
             <Link
               to={window.location.origin}
               className="flex h-full items-center gap-4"
             >
               <Logo />
-              <div className="font-Agbalumo text-2xl font-bold tracking-wide text-violet-600 dark:text-violet-100">
+              <span className="font-Agbalumo text-2xl font-bold tracking-wide text-violet-600 dark:text-violet-100">
                 StayEase
-              </div>
+              </span>
             </Link>
           </div>
           <div className="ml-auto flex items-center gap-4 text-lg">
@@ -92,7 +92,7 @@ function AppLayout() {
 
             <ModeButton />
           </div>
-        </div>
+        </nav>
       </header>
 
       <div className="flex-grow overflow-auto bg-slate-50 dark:bg-slate-950">

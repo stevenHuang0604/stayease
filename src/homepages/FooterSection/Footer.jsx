@@ -1,3 +1,4 @@
+import FooterColumn from "./FooterColumn";
 import FooterColumnTitle from "./FooterColumnTitle";
 import FooterLogo from "./FooterLogo";
 
@@ -15,50 +16,12 @@ function Footer() {
             </div>
           </div>
 
-          <div>
-            <FooterColumnTitle>Quick Links</FooterColumnTitle>
+          <FooterColumn
+            title="Quick Links"
+            detailAry={["Home", "Search Hotels"]}
+          />
 
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="/#footer"
-                  className="text-sm hover:text-violet-300 dark:hover:text-violet-700"
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#footer"
-                  className="text-sm hover:text-violet-300 dark:hover:text-violet-700"
-                >
-                  Search Hotels
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <FooterColumnTitle>Support</FooterColumnTitle>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="/#footer"
-                  className="text-sm hover:text-violet-300 dark:hover:text-violet-700"
-                >
-                  Help Center
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#footer"
-                  className="text-sm hover:text-violet-300 dark:hover:text-violet-700"
-                >
-                  FAQs
-                </a>
-              </li>
-            </ul>
-          </div>
+          <FooterColumn title="Support" detailAry={["Help Center", "FAQs"]} />
 
           <div>
             <FooterColumnTitle>Connect With Us</FooterColumnTitle>
@@ -72,7 +35,7 @@ function Footer() {
                   type="email"
                   id="newsletter"
                   placeholder="Your email"
-                  className="w-full px-3 py-2 text-black"
+                  className="w-full px-3 py-2 text-black outline-none"
                 />
                 <button
                   type="submit"

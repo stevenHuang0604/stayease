@@ -10,6 +10,8 @@ import {
 import { useHotelById } from "../hotels/useHotelById";
 import Spinner from "../../ui/Spinner";
 import { useUpdateBookmark } from "./useUpdateBookmark";
+import Rating from "../../ui/Rating";
+import Location from "../../ui/Location";
 
 function BookmarkItem({ bookmark }) {
   const { hotels, isLoading } = useHotelById(bookmark.hotelId);
@@ -44,17 +46,8 @@ function BookmarkItem({ bookmark }) {
         </div>
 
         <div className="mb-2 mt-2 flex gap-3">
-          <div className="flex items-center gap-1 text-xs">
-            <FaStar className="flex items-center justify-center text-yellow-500" />
-            <span className="text-slate-700 dark:text-slate-300">
-              {hotel.rating}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-1 text-xs text-blue-500">
-            <FaLocationDot className="flex items-center justify-center" />
-            <span>{`${hotel.city}, ${hotel.country}`}</span>
-          </div>
+          <Rating rating={hotel.rating} />
+          <Location city={hotel.city} country={hotel.country} />
         </div>
 
         <div className="mb-3 mt-1 h-[1px] w-full bg-slate-300 dark:bg-slate-700"></div>

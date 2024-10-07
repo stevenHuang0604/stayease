@@ -12,7 +12,6 @@ import HotelDetail, {
 } from "./features/hotels/HotelDetail";
 import Bookmarks from "./pages/Bookmarks";
 import MyReservations from "./pages/MyReservations";
-import Auth from "./pages/Auth";
 import PageNotFound from "./pages/PageNotFound";
 import ReservationDetail, {
   loader as reservationLoader,
@@ -62,10 +61,6 @@ const router = createBrowserRouter([
         loader: reservationLoader,
       },
     ],
-  },
-  {
-    path: "/auth",
-    element: <Auth />,
   },
   {
     path: "*",

@@ -1,6 +1,6 @@
+import TestimonialItem from "./TestimonialItem";
 import SectionTitle from "../../ui/SectionTitle";
 import users from "../../utils/users";
-import TestimonialItem from "./TestimonialItem";
 
 function Testimonials() {
   const groupUsers = [users.slice(0, 3), users.slice(3, 7), users.slice(7, 10)];

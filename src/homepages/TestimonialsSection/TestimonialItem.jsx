@@ -1,5 +1,4 @@
-import { memo, useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 
 function TestimonialItem({ name, feedback, title, avatar }) {
   const [imageLoaded, setImageLoaded] = useState(false);

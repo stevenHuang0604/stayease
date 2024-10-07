@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaLocationDot, FaStar } from "react-icons/fa6";
+
+import Rating from "../../ui/Rating";
+import Location from "../../ui/Location";
 
 function HotelPreviewCard({ hotel }) {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -34,17 +36,8 @@ function HotelPreviewCard({ hotel }) {
         </h3>
 
         <div className="mb-4 mt-1 flex flex-col gap-2 xl:flex-row">
-          <div className="flex items-center gap-1 text-xs xl:text-sm">
-            <FaStar className="flex items-center justify-center text-yellow-500" />
-            <span className="text-slate-800 dark:text-slate-200">
-              {hotel.rating}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-1 text-xs text-blue-500 xl:text-sm">
-            <FaLocationDot className="flex items-center justify-center" />
-            <span className="">{`${hotel.city}, ${hotel.country}`}</span>
-          </div>
+          <Rating rating={hotel.rating} />
+          <Location city={hotel.city} country={hotel.country} />
         </div>
 
         <div className="mt-auto rounded-md bg-violet-600 py-2 text-center text-sm font-medium text-slate-50 xl:text-base dark:bg-violet-400 dark:text-slate-900">

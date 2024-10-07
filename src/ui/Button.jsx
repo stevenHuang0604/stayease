@@ -8,8 +8,7 @@ function Button({
   onClick,
   children,
 }) {
-  let className =
-    "flex items-center rounded-lg font-semibold  transition-all duration-200 tracking-wide ";
+  let className = "flex items-center rounded-lg font-semibold tracking-wide ";
 
   // variant styles
   const variants = {

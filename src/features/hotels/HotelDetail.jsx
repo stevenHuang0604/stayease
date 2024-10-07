@@ -18,6 +18,8 @@ import SearchItem from "../../ui/SearchItem";
 import { useUpdateBookmark } from "../bookmarks/useUpdateBookmark";
 import { formatDate } from "../../helpers/formatDate";
 import { createReservation } from "../../services/apiReservations";
+import Rating from "../../ui/Rating";
+import Location from "../../ui/Location";
 
 function formatTime(time) {
   const [hours, minutes] = time.split(":");
@@ -103,17 +105,8 @@ function HotelDetail() {
               </div>
 
               <div className="mb-2 mt-2 flex gap-3">
-                <div className="flex items-center gap-1 text-sm">
-                  <FaStar className="flex items-center justify-center text-yellow-500" />
-                  <span className="text-slate-700 dark:text-slate-300">
-                    {hotel.rating}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-1 text-sm text-blue-500">
-                  <FaLocationDot className="flex items-center justify-center" />
-                  <span>{`${hotel.city}, ${hotel.country}`}</span>
-                </div>
+                <Rating rating={hotel.rating} />
+                <Location city={hotel.city} country={hotel.country} />
               </div>
 
               <div className="mb-6 mt-4 h-[1px] w-full bg-slate-300 dark:bg-slate-700"></div>

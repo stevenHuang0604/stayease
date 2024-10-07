@@ -11,28 +11,28 @@ const features = [
     description: "Advanced filtering and sorting for perfect accommodations",
     icon: <FaSearchengin />,
     color: "blue",
-    key: self.crypto.randomUUID(),
+    key: 1,
   },
   {
     title: "Real-time Availability",
     description: "Up-to-the-minute room availability and instant booking",
     icon: <FaBolt />,
     color: "yellow",
-    key: self.crypto.randomUUID(),
+    key: 2,
   },
   {
     title: "Personalized Recommendations ",
     description: "Tailored suggestions based on user preferences and history",
     icon: <FaUserShield />,
     color: "green",
-    key: self.crypto.randomUUID(),
+    key: 3,
   },
   {
     title: "Secure Payments",
     description: "Multiple payment options with top-tier security measures",
     icon: <FaCreditCard />,
     color: "orange",
-    key: self.crypto.randomUUID(),
+    key: 4,
   },
 ];
 

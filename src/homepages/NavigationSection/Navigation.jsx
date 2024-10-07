@@ -1,35 +1,21 @@
 import { Link } from "react-router-dom";
+
 import ModeButton from "../../ui/ModeButton";
 import Logo from "./Logo";
 
 function Navigation() {
   return (
-    <nav className="mx-auto max-w-full border-b-[1px] bg-violet-50 bg-opacity-30 dark:bg-violet-950">
-      <div className="flex h-20 items-center px-8 py-3">
+    <nav className="mx-auto h-20 max-w-full border-b bg-violet-50 bg-opacity-30 dark:bg-violet-950">
+      <div className="flex h-full items-center px-8 py-3">
         <div className="h-full">
           <Link to="/" className="flex h-full items-center gap-4">
             <Logo />
-            <div className="font-Agbalumo text-2xl font-bold tracking-wide text-violet-600 dark:text-violet-100">
+            <span className="font-Agbalumo text-2xl font-bold tracking-wide text-violet-600 dark:text-violet-100">
               StayEase
-            </div>
+            </span>
           </Link>
         </div>
         <ul className="ml-auto flex items-center gap-4 text-lg">
-          {/* <li>
-            <Button variant="default" color="primary" size="medium" to="/app">
-              Sign In
-            </Button>
-          </li>
-          <li>
-            <Button
-              variant="outline"
-              color="primary"
-              size="medium"
-              to="/signup"
-            >
-              Sign Up
-            </Button>
-          </li> */}
           <li>
             <ModeButton />
           </li>
