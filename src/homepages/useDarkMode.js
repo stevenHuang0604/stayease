@@ -25,7 +25,6 @@ export function useDarkMode() {
     */
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        console.log(mutation);
         if (mutation.attributeName === "class") {
           setIsDarkMode(document.documentElement.classList.contains("dark"));
         }
