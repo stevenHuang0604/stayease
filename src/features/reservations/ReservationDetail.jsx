@@ -24,7 +24,6 @@ function ReservationDetail() {
   const { data, isLoading: isFetching } = useReservationById();
   // const [reservation] = useLoaderData();
   const reservation = data === undefined ? {} : data[0];
-  console.log(reservation);
 
   const { mutate: updateReservation, isLoading: isUpdating } =
     useUpdateReservation();
@@ -79,7 +78,6 @@ function ReservationDetail() {
         guests,
         hotelId: hotel.id,
       };
-      console.log(newReservation);
 
       updateReservation({ reservationId: reservation.id, newReservation });
     }

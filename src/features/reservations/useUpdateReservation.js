@@ -10,8 +10,7 @@ export function useUpdateReservation() {
   const { mutate, isLoading } = useMutation({
     mutationFn: ({ reservationId, newReservation }) =>
       udpateReservation(reservationId, newReservation),
-    onSuccess: (updatedReservation) => {
-      console.log(updatedReservation);
+    onSuccess: () => {
       toast.success("Booking successfully deleted");
 
       // queryClient.setQueryData(["reservation", Number(id)], data[0]);

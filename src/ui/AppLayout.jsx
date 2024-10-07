@@ -6,6 +6,7 @@ import {
 } from "react-icons/hi2";
 
 import Logo from "../homepages/NavigationSection/Logo";
+import ModeButton from "./ModeButton";
 
 function AppLayout() {
   return (
@@ -83,12 +84,13 @@ function AppLayout() {
               )}
             </NavLink>
 
-            <button className="h-10 w-10 cursor-pointer overflow-hidden rounded-full shadow outline outline-2 outline-slate-200 transition-all duration-300 hover:opacity-90 hover:shadow-md hover:outline-slate-300">
+            <ModeButton />
+            {/* <button className="h-10 w-10 cursor-pointer overflow-hidden rounded-full shadow outline outline-2 outline-slate-200 transition-all duration-300 hover:opacity-90 hover:shadow-md hover:outline-slate-300">
               <img
                 src="/avatars/avatar-1.jpg"
                 className="h-full w-full transition-all duration-300 hover:scale-105"
               />
-            </button>
+            </button> */}
           </div>
         </div>
       </header>

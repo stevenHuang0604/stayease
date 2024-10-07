@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom";
-import Button from "../../ui/Button";
 import ModeButton from "../../ui/ModeButton";
 import Logo from "./Logo";
 
 function Navigation() {
   return (
-    <nav className="mx-auto max-w-full border-b-[1px] bg-violet-50 bg-opacity-30">
+    <nav className="mx-auto max-w-full border-b-[1px] bg-violet-50 bg-opacity-30 dark:bg-violet-950">
       <div className="flex h-20 items-center px-8 py-3">
         <div className="h-full">
           <Link to="/" className="flex h-full items-center gap-4">
             <Logo />
-            <div className="font-Agbalumo text-2xl font-bold tracking-wide text-violet-600">
+            <div className="font-Agbalumo text-2xl font-bold tracking-wide text-violet-600 dark:text-violet-100">
               StayEase
             </div>
           </Link>

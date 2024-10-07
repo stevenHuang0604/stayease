@@ -3,7 +3,10 @@ import FooterLogo from "./FooterLogo";
 
 function Footer() {
   return (
-    <footer className="bg-violet-900 pt-10 text-slate-200" id="footer">
+    <footer
+      className="bg-violet-900 pt-10 text-slate-200 dark:bg-violet-100 dark:text-slate-800"
+      id="footer"
+    >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 justify-items-center gap-6 text-center md:grid-cols-2 lg:grid-cols-4 lg:text-start">
           <div className="flex flex-col items-center">
@@ -17,12 +20,18 @@ function Footer() {
 
             <ul className="space-y-2">
               <li>
-                <a href="/#footer" className="text-sm hover:text-violet-300">
+                <a
+                  href="/#footer"
+                  className="text-sm hover:text-violet-300 dark:hover:text-violet-700"
+                >
                   Home
                 </a>
               </li>
               <li>
-                <a href="/#footer" className="text-sm hover:text-violet-300">
+                <a
+                  href="/#footer"
+                  className="text-sm hover:text-violet-300 dark:hover:text-violet-700"
+                >
                   Search Hotels
                 </a>
               </li>
@@ -33,12 +42,18 @@ function Footer() {
             <FooterColumnTitle>Support</FooterColumnTitle>
             <ul className="space-y-2">
               <li>
-                <a href="/#footer" className="text-sm hover:text-violet-300">
+                <a
+                  href="/#footer"
+                  className="text-sm hover:text-violet-300 dark:hover:text-violet-700"
+                >
                   Help Center
                 </a>
               </li>
               <li>
-                <a href="/#footer" className="text-sm hover:text-violet-300">
+                <a
+                  href="/#footer"
+                  className="text-sm hover:text-violet-300 dark:hover:text-violet-700"
+                >
                   FAQs
                 </a>
               </li>
@@ -61,7 +76,7 @@ function Footer() {
                 />
                 <button
                   type="submit"
-                  className="bg-violet-600 px-4 py-2 hover:bg-violet-700"
+                  className="bg-violet-400 px-4 py-2 hover:bg-violet-300 dark:bg-violet-600 dark:hover:bg-violet-700"
                 >
                   Subscribe
                 </button>

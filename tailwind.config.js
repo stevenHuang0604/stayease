@@ -5,6 +5,7 @@ import tailwind3dTransforms from "@xpd/tailwind-3dtransforms";
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "selector",
   theme: {
     fontFamily: {
       Agbalumo: ["Agbalumo", "system-ui"],

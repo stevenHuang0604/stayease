@@ -15,19 +15,21 @@ function Button({
   const variants = {
     default: "",
     outline: "bg-transparent outline outline-1",
-    ghost: "bg-transparent hover:bg-opacity-10",
-    link: "bg-transparent underline hover:bg-opacity-10",
+    ghost: "bg-transparent hover:bg-opacity-10 dark:hover:bg-opacity-10",
+    link: "bg-transparent underline hover:bg-opacity-10 dark:hover:bg-opacity-10",
   };
   className += variants[variant] + " ";
 
   // color styles
   const colors = {
     primary: {
-      default: "bg-violet-600 text-slate-50 hover:bg-violet-800",
+      default:
+        "bg-violet-600 text-slate-50 hover:bg-violet-800   dark:bg-violet-400 dark:text-slate-950 dark:hover:bg-violet-200",
       outline:
-        "outline-violet-600 text-violet-600 hover:outline-violet-800 hover:text-violet-800 hover:bg-violet-200",
-      ghost: "text-violet-600 hover:bg-violet-600",
-      link: "text-violet-600 hover:text-violet-800",
+        "outline-violet-600 text-violet-600 hover:outline-violet-800 hover:text-violet-800 hover:bg-violet-200 dark:outline-violet-400 dark:text-violet-400 dark:hover:outline-violet-200 dark:hover:text-violet-200 dark:hover:bg-violet-800",
+      ghost:
+        "text-violet-600 hover:bg-violet-600 dark:text-violet-400 dark:hover:bg-violet-400",
+      link: "text-violet-600 hover:text-violet-800 dark:text-violet-400 dark:hover:text-violet-200",
     },
     secondary: {
       default: "bg-teal-600 text-slate-50",
