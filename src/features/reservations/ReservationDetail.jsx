@@ -91,7 +91,7 @@ function ReservationDetail() {
     <main className="px-14 py-14 md:px-16 md:py-16">
       <div className="mx-auto flex w-[80%] flex-col gap-8">
         <div className="overflow-hidden rounded-lg shadow-md">
-          <div className="flex items-center justify-between bg-violet-500 px-6 py-5 text-base font-medium text-slate-200 md:px-10 md:text-lg">
+          <div className="flex items-center justify-between bg-violet-500 px-6 py-5 text-base font-medium text-slate-200 md:px-10 md:text-lg dark:text-slate-800">
             <div className="flex items-center gap-4 text-xl font-semibold">
               <HiOutlineHomeModern className="h-8 w-8" />
               <p>10 nights in {hotel.name}</p>
@@ -105,21 +105,23 @@ function ReservationDetail() {
           </div>
 
           <section className="px-6 pb-3 pt-8 md:px-10">
-            <div className="flex items-center gap-4 py-2 text-base text-blue-600">
+            <div className="flex items-center gap-4 py-2 text-base text-blue-500">
               <FaLocationDot className="flex h-5 w-5 items-center justify-center" />
               <span>{`${hotel.city}, ${hotel.country}`}</span>
             </div>
 
             <div className="mb-4 flex items-center justify-between">
-              <h1 className="text-xl font-medium">{hotel.name}</h1>
+              <h1 className="text-xl font-medium text-slate-800 dark:text-slate-200">
+                {hotel.name}
+              </h1>
             </div>
 
-            <div className="flex items-center gap-4 py-2 text-lg font-medium">
+            <div className="flex items-center gap-4 py-2 text-lg font-medium text-slate-800 dark:text-slate-200">
               <HiOutlineUsers className="h-5 w-5 text-violet-500" />
               <p>{reservation.guests} guests</p>
             </div>
 
-            <div className="font-base flex items-center gap-4 py-2 text-lg font-medium">
+            <div className="font-base flex items-center gap-4 py-2 text-lg font-medium text-slate-800 dark:text-slate-200">
               <HiOutlineBuildingStorefront className="h-5 w-5 text-violet-500" />
               <p>
                 {Object.values(reservation.rooms).reduce(
@@ -130,14 +132,14 @@ function ReservationDetail() {
               </p>
             </div>
 
-            <div className="mb-auto mt-5 flex items-center gap-4 pb-4 text-base text-zinc-600">
+            <div className="mb-auto mt-5 flex items-center gap-4 pb-4 text-base text-zinc-600 dark:text-zinc-400">
               <FaLocationArrow className="h-5 w-5" />
               <span className="border-b border-b-slate-800">
                 {hotel.address}
               </span>
             </div>
 
-            <div className="mt-6 rounded bg-green-100 px-8 py-4 text-green-700">
+            <div className="mt-6 rounded bg-green-100 px-8 py-4 text-green-700 dark:bg-green-900 dark:text-green-300">
               <div className="flex items-center gap-4 text-xl">
                 <span className="flex items-center gap-2 font-medium">
                   <HiOutlineCurrencyDollar className="h-6 w-6" />
@@ -165,7 +167,7 @@ function ReservationDetail() {
             </div>
           </section>
 
-          <footer className="flex items-center justify-between px-6 py-4 text-xs text-slate-400 md:px-10">
+          <footer className="flex items-center justify-between px-6 py-4 text-xs text-slate-400 md:px-10 dark:text-slate-600">
             <Button
               variant="outline"
               color="primary"
@@ -187,15 +189,17 @@ function ReservationDetail() {
         <div className="ml-auto">
           <Link
             to={`/app/hotels/${hotel.id}`}
-            className="rounded-md bg-violet-600 px-4 py-3 text-right font-medium text-slate-50"
+            className="rounded-md bg-violet-600 px-4 py-3 text-right font-medium text-slate-50 dark:bg-violet-400 dark:text-slate-950"
           >
             Hotel details
           </Link>
         </div>
 
         {isEditModalOpen && (
-          <div className="mx-auto w-[60%] rounded-md border border-slate-200 p-8">
-            <h3 className="pb-4 text-lg font-medium">Editing ...</h3>
+          <div className="mx-auto w-[60%] rounded-md border border-slate-200 p-8 dark:border-slate-800">
+            <h3 className="pb-4 text-lg font-medium text-slate-800 dark:text-slate-200">
+              Editing ...
+            </h3>
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               <div className="flex flex-col gap-4">
                 <SearchItem
@@ -236,7 +240,7 @@ function ReservationDetail() {
                 />
               </div>
 
-              <button className="rounded-md bg-violet-600 py-3 text-lg font-medium text-slate-200">
+              <button className="rounded-md bg-violet-600 py-3 text-lg font-medium text-slate-200 dark:bg-violet-400 dark:text-slate-800">
                 Confirm Editing
               </button>
             </form>

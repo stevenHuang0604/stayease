@@ -4,7 +4,7 @@ import Search from "../ui/Search";
 
 function Index() {
   return (
-    <main className="px-4 py-4 md:px-8 md:py-8 xl:px-14 xl:py-14">
+    <main className="flex min-h-full flex-col px-4 py-4 md:px-8 md:py-8 xl:px-14 xl:py-14">
       <Search />
       <HotelsContainer />
       <ReservationsContainer page="app" />

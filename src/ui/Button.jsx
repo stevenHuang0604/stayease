@@ -32,35 +32,39 @@ function Button({
       link: "text-violet-600 hover:text-violet-800 dark:text-violet-400 dark:hover:text-violet-200",
     },
     secondary: {
-      default: "bg-teal-600 text-slate-50",
+      default: "bg-teal-600 text-slate-50 dark:bg-teal-400 dark:text-slate-950",
       outline:
-        "outline-teal-600 text-teal-600 hover:outline-teal-600 hover:text-teal-800 hover:bg-teal-200",
-      ghost: "text-teal-600 hover:bg-teal-600",
-      link: "text-teal-600 hover:text-teal-800",
+        "outline-teal-600 text-teal-600 hover:outline-teal-600 hover:text-teal-800 hover:bg-teal-200 dark:outline-teal-400 dark:text-teal-400 dark:hover:outline-teal-400 dark:hover:text-teal-200 dark:hover:bg-teal-800",
+      ghost:
+        "text-teal-600 hover:bg-teal-600 dark:text-teal-400 dark:hover:bg-teal-400",
+      link: "text-teal-600 hover:text-teal-800 dark:text-teal-400 dark:hover:text-teal-200",
     },
     success: {
-      default: "bg-green-600 text-slate-50",
+      default:
+        "bg-green-600 text-slate-50 dark:bg-green-400 dark:text-slate-950",
       outline:
-        "outline-green-600 text-green-600 hover:outline-green-600 hover:text-green-800 hover:bg-green-200",
-      ghost: "text-green-600 hover:bg-green-600",
-      link: "text-green-600 hover:text-green-800",
+        "outline-green-600 text-green-600 hover:outline-green-600 hover:text-green-800 hover:bg-green-200 dark:outline-green-400 dark:text-green-400 dark:hover:outline-green-400 dark:hover:text-green-200 dark:hover:bg-green-800",
+      ghost:
+        "text-green-600 hover:bg-green-600 dark:text-green-400 dark:hover:bg-green-400",
+      link: "text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-200",
     },
     danger: {
-      default: "bg-red-600 text-slate-50",
+      default: "bg-red-600 text-slate-50 dark:bg-red-400 dark:text-slate-950",
       outline:
-        "outline-red-600 text-red-600 hover:outline-red-600 hover:text-red-800 hover:bg-red-200",
-      ghost: "text-red-600 hover:bg-red-600",
-      link: "text-red-600 hover:text-red-800",
+        "outline-red-600 text-red-600 hover:outline-red-600 hover:text-red-800 hover:bg-red-200 dark:outline-red-400 dark:text-red-400 dark:hover:outline-red-400 dark:hover:text-red-200 dark:hover:bg-red-800",
+      ghost:
+        "text-red-600 hover:bg-red-600 dark:text-red-400 dark:hover:bg-red-400",
+      link: "text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-200",
     },
   };
   className += colors[color][variant] + " ";
 
   // size styles
   const sizes = {
-    small: "px-2 py-1 sm:text-sm shadow-sm text-xs",
-    medium: "px-3 py-1.5 md:text-base shadow text-sm",
-    large: "px-4 py-2 lg:text-lg shadow-lg text-base",
-    xl: "px-6 py-3 text-xl shadow-xl",
+    small: "px-2 py-1 sm:text-sm shadow-sm text-xs shadow-slate-400/50",
+    medium: "px-3 py-1.5 md:text-base shadow text-sm shadow-slate-400/50",
+    large: "px-4 py-2 lg:text-lg shadow-lg text-base shadow-slate-400/50",
+    xl: "px-6 py-3 text-xl shadow-xl shadow-slate-400/50",
   };
   className += sizes[size] + " ";
 

@@ -8,9 +8,13 @@ function BookmarksContainer() {
   return (
     <div className="p-4 lg:p-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-semibold text-violet-700">My Bookmarks</h1>
+        <h1 className="text-3xl font-semibold text-violet-700 dark:text-violet-300">
+          My Bookmarks
+        </h1>
 
-        <p className="text-lg">{bookmarks?.length} hotels saved</p>
+        <p className="text-lg text-slate-800 dark:text-slate-200">
+          {bookmarks?.length} hotels saved
+        </p>
       </div>
       {isLoading ? (
         <Spinner />

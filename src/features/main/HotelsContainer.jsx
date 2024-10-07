@@ -7,7 +7,7 @@ function HotelsContainer() {
 
   return (
     <div className="mt-8 p-0 md:p-8">
-      <h1 className="mb-6 text-3xl font-semibold text-violet-700">
+      <h1 className="mb-6 text-3xl font-semibold text-violet-700 dark:text-violet-300">
         Popular hotels
       </h1>
 

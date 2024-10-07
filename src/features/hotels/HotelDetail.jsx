@@ -85,7 +85,9 @@ function HotelDetail() {
           <div className="flex flex-col gap-4">
             <div className="rounded-md border p-8 shadow-sm">
               <div className="flex items-center justify-between">
-                <h1 className="text-3xl font-medium">{hotel.name}</h1>
+                <h1 className="text-3xl font-medium text-slate-800 dark:text-slate-200">
+                  {hotel.name}
+                </h1>
                 <button
                   className="cursor-pointer"
                   onClick={() => updateBookmark(hotel.id)}
@@ -102,35 +104,37 @@ function HotelDetail() {
 
               <div className="mb-2 mt-2 flex gap-3">
                 <div className="flex items-center gap-1 text-sm">
-                  <FaStar className="flex items-center justify-center text-yellow-400" />
-                  <span className="text-slate-700">{hotel.rating}</span>
+                  <FaStar className="flex items-center justify-center text-yellow-500" />
+                  <span className="text-slate-700 dark:text-slate-300">
+                    {hotel.rating}
+                  </span>
                 </div>
 
-                <div className="flex items-center gap-1 text-sm text-blue-600">
+                <div className="flex items-center gap-1 text-sm text-blue-500">
                   <FaLocationDot className="flex items-center justify-center" />
                   <span>{`${hotel.city}, ${hotel.country}`}</span>
                 </div>
               </div>
 
-              <div className="mb-6 mt-4 h-[1px] w-full bg-slate-300"></div>
+              <div className="mb-6 mt-4 h-[1px] w-full bg-slate-300 dark:bg-slate-700"></div>
 
-              <p className="text-base font-normal text-slate-800">
+              <p className="text-base font-normal text-slate-800 dark:text-slate-200">
                 {hotel.description}
               </p>
 
-              <div className="mt-6 flex items-center gap-2 text-base">
-                <FaBed className="text-violet-600" />
+              <div className="mt-6 flex items-center gap-2 text-base text-slate-800 dark:text-slate-200">
+                <FaBed className="text-violet-600 dark:text-violet-400" />
                 <span className="font-medium">Available Room: </span>
                 {hotel.available_rooms} rooms
               </div>
 
-              <div className="mt-2 flex items-center gap-2 text-base">
-                <FaMoneyBill1Wave className="text-violet-600" />
+              <div className="mt-2 flex items-center gap-2 text-base text-slate-800 dark:text-slate-200">
+                <FaMoneyBill1Wave className="text-violet-600 dark:text-violet-400" />
                 <span className="font-medium">Base Price: </span>$
                 {hotel.base_price}
               </div>
 
-              <div className="mt-7 flex items-center gap-1 text-base text-zinc-600">
+              <div className="mt-7 flex items-center gap-1 text-base text-zinc-600 dark:text-zinc-400">
                 <FaLocationArrow />
                 <span className="border-b border-b-slate-800">
                   {hotel.address}
@@ -139,9 +143,11 @@ function HotelDetail() {
             </div>
 
             <div className="rounded-md border p-8 shadow-sm">
-              <h2 className="text-xl">Space & Rooms</h2>
+              <h2 className="text-xl text-slate-800 dark:text-slate-200">
+                Space & Rooms
+              </h2>
 
-              <div className="mb-6 mt-4 h-[1px] w-full bg-slate-300"></div>
+              <div className="mb-6 mt-4 h-[1px] w-full bg-slate-300 dark:bg-slate-700"></div>
 
               <div className="flex gap-4">
                 {Object.entries(hotel.room_types).map(([roomType, details]) => (
@@ -149,11 +155,13 @@ function HotelDetail() {
                     className="rounded-md border p-4 shadow-sm"
                     key={roomType}
                   >
-                    <h3 className="text-lg">{roomType}</h3>
-                    <p className="mt-2 text-sm text-slate-600">
+                    <h3 className="text-lg text-slate-800 dark:text-slate-200">
+                      {roomType}
+                    </h3>
+                    <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
                       ${details.price} each room
                     </p>
-                    <span className="text-sm text-slate-600">
+                    <span className="text-sm text-slate-600 dark:text-slate-400">
                       {details.capacity} room left
                     </span>
                   </div>
@@ -163,7 +171,7 @@ function HotelDetail() {
           </div>
 
           <div className="flex basis-1/3 flex-col gap-4">
-            <div className="flex gap-8 rounded-md border p-8 shadow-sm lg:justify-between">
+            <div className="flex gap-8 rounded-md border p-8 text-slate-800 shadow-sm lg:justify-between dark:text-slate-200">
               <div>
                 <h3 className="font-medium">Check-in:</h3>
                 <p>{`${formatTime(hotel.check_in_time)}`}</p>
@@ -216,7 +224,7 @@ function HotelDetail() {
                   />
                 </div>
 
-                <button className="rounded-md bg-violet-600 py-3 text-lg font-medium text-slate-200">
+                <button className="rounded-md bg-violet-600 py-3 text-lg font-medium text-slate-200 dark:bg-violet-400 dark:text-slate-800">
                   Reserve
                 </button>
               </form>

@@ -18,9 +18,11 @@ function HotelList() {
         <Spinner />
       ) : (
         <>
-          <h2 className="text-2xl font-medium text-slate-400">
+          <h2 className="text-2xl font-medium text-slate-400 dark:text-slate-600">
             {hotels.length} choices found in{" "}
-            <span className="text-violet-700">{destination}</span>
+            <span className="text-violet-700 dark:text-slate-300">
+              {destination}
+            </span>
           </h2>
           <div className="mt-6 flex flex-col gap-4">
             {hotels.map((hotel) => (
