@@ -1,6 +1,20 @@
+<p align='center'>
+  <a href='https://stayease-stevenhuang0604.vercel.app/' target='_blank'>
+    <img src="./public/logo-light.svg" width="300"  align="center"/>
+  </a>
+</p>
+
 # STAYEASE
 
 StayEase is a modern, user-friendly hotel booking platform designed to simplify the process of finding and reserving accommodations. With an intuitive interface and powerful features, StayEase offers a seamless experience for travelers looking for their perfect stay.
+
+## Screenshots
+
+![Home page](./public/homepage-light.png)
+![Main page](./public/main-dark.png)
+![Hotel detail](./public/hotel-dark.png)
+![Reservation page](./public/reservation-dark.png)
+![Reservation detail](./public/reservaiondetail-dark.png)
 
 ## Features
 
