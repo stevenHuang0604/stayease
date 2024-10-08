@@ -19,7 +19,7 @@ function BookmarksContainer() {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="mt-10 grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3 lg:gap-10">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-10">
           {bookmarks.map((bookmark) => (
             <BookmarkItem bookmark={bookmark} key={bookmark.id} />
           ))}

@@ -15,6 +15,9 @@ function ReservationItem({ reservation }) {
   const md = useMediaQuery({
     query: "(min-width: 768px)",
   });
+  const sm = useMediaQuery({
+    query: "(min-width: 640px)",
+  });
 
   function handleToggleModal() {
     setModalOpen((prev) => !prev);
@@ -72,16 +75,46 @@ function ReservationItem({ reservation }) {
       )}
 
       <td className="relative">
-        <Button
-          variant="ghost"
-          color="secondary"
-          size="medium"
-          onClick={handleToggleModal}
-        >
-          <HiOutlineEllipsisVertical />
-        </Button>
+        {sm ? (
+          <Button
+            variant="ghost"
+            color="secondary"
+            size="medium"
+            onClick={handleToggleModal}
+          >
+            <HiOutlineEllipsisVertical />
+          </Button>
+        ) : (
+          <>
+            <div className="flex items-center justify-center gap-4 text-lg">
+              <Link
+                to={
+                  window.location.pathname === "/"
+                    ? window.location.origin
+                    : `/app/reservations/${reservation.id}`
+                }
+                className="flex items-center justify-center gap-4 text-violet-500"
+              >
+                <span>
+                  <HiEye />
+                </span>
+                <span className="hidden lg:block">Details</span>
+              </Link>
 
-        {modalOpen && (
+              <button
+                className="flex items-center justify-center gap-4 text-violet-500"
+                onClick={handleDelete}
+              >
+                <span>
+                  <HiTrash />
+                </span>
+                <span className="hidden lg:block">Delete</span>
+              </button>
+            </div>
+          </>
+        )}
+
+        {sm && modalOpen && (
           <div className="absolute left-0 z-10 mt-2 flex items-start justify-start gap-2 overflow-visible border border-slate-100 bg-slate-50 px-6 py-2 text-base shadow-sm lg:flex-col xl:w-[150%] dark:border-slate-900 dark:bg-slate-950">
             <Link
               to={
@@ -96,16 +129,6 @@ function ReservationItem({ reservation }) {
               </span>
               <span className="hidden lg:block">Details</span>
             </Link>
-            {/* 
-            <button
-              className="flex items-center justify-center gap-4 text-violet-500"
-              onClick={handleOpenEdit}
-            >
-              <span>
-                <HiPencil />
-              </span>
-              <span className="hidden lg:block">Edit</span>
-            </button> */}
 
             <button
               className="flex items-center justify-center gap-4 text-violet-500"
@@ -118,20 +141,6 @@ function ReservationItem({ reservation }) {
             </button>
           </div>
         )}
-
-        {/* <Link
-          to={
-            window.location.pathname === "/"
-              ? window.location.origin
-              : `/app/reservations/${reservation.id}`
-          }
-          className="flex items-center justify-center gap-1 text-violet-500"
-        >
-          <span>See details</span>
-          <span className="hidden lg:block">
-            <HiOutlineArrowRight />
-          </span>
-        </Link> */}
       </td>
     </tr>
   );

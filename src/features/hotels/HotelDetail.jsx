@@ -140,7 +140,7 @@ function HotelDetail() {
 
               <div className="mb-6 mt-4 h-[1px] w-full bg-slate-300 dark:bg-slate-700"></div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col gap-4 sm:flex-row">
                 {Object.entries(hotel.room_types).map(([roomType, details]) => (
                   <div
                     className="rounded-md border p-4 shadow-sm"
