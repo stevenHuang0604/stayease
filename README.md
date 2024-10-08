@@ -108,18 +108,6 @@ To run this project locally:
 
 7. Open your browser and navigate to `http://localhost:5173` (or the port specified by Vite) to view the app.
 
-## Contributing
-
-We welcome contributions to StayEase! If you have suggestions for improvements or bug fixes, please feel free to:
-
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-Please ensure your code adheres to the project's coding standards and includes appropriate tests.
-
 ## License
 
 This project is open source and available under the MIT License. See the [LICENSE](LICENSE) file for more information.
