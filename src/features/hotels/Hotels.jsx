@@ -3,7 +3,7 @@ import HotelList from "./HotelList";
 
 function Hotels() {
   return (
-    <main className="px-14 py-14 md:px-16 md:py-16">
+    <main className="flex min-h-full flex-col px-4 py-4 md:px-8 md:py-8 xl:px-14 xl:py-14">
       <Search />
       <HotelList />
     </main>

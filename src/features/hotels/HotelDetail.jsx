@@ -5,10 +5,8 @@ import {
   FaBed,
   FaBookmark,
   FaLocationArrow,
-  FaLocationDot,
   FaMoneyBill1Wave,
   FaRegBookmark,
-  FaStar,
 } from "react-icons/fa6";
 
 import Search from "../../ui/Search";

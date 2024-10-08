@@ -15,10 +15,10 @@ function HotelPreviewCard({ hotel }) {
   }, [hotel.image]);
 
   return (
-    <div className="flex max-w-[25%] flex-col overflow-hidden rounded-md shadow-md transition-all hover:shadow-xl dark:hover:shadow-slate-400/50">
-      <div className="flex-shrink-0">
+    <div className="flex overflow-hidden rounded-md shadow-md transition-all hover:shadow-xl sm:max-w-[25%] sm:flex-col dark:hover:shadow-slate-400/50">
+      <div className="max-w-[35%] sm:max-w-[100%] sm:flex-shrink-0">
         {imageLoaded ? (
-          <img src={hotel.image} alt={hotel.name} />
+          <img src={hotel.image} alt={hotel.name} className="h-full" />
         ) : (
           <div className="h-full bg-slate-500 py-10 text-center text-lg font-semibold text-slate-50 dark:text-slate-900">
             Image Loading...

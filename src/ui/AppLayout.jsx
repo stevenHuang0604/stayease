@@ -7,8 +7,13 @@ import {
 
 import Logo from "../homepages/NavigationSection/Logo";
 import ModeButton from "./ModeButton";
+import { useMediaQuery } from "react-responsive";
 
 function AppLayout() {
+  const sm = useMediaQuery({
+    query: "(min-width: 640px)",
+  });
+
   return (
     <div className="flex h-screen flex-col">
       <header className="mx-auto w-full border-b-[1px] bg-violet-50 bg-opacity-30 dark:bg-violet-950">
@@ -19,9 +24,11 @@ function AppLayout() {
               className="flex h-full items-center gap-4"
             >
               <Logo />
-              <span className="font-Agbalumo text-2xl font-bold tracking-wide text-violet-600 dark:text-violet-100">
-                StayEase
-              </span>
+              {sm && (
+                <span className="font-Agbalumo text-2xl font-bold tracking-wide text-violet-600 dark:text-violet-100">
+                  StayEase
+                </span>
+              )}
             </Link>
           </div>
           <div className="ml-auto flex items-center gap-4 text-lg">
