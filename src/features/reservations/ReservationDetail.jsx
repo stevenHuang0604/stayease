@@ -196,7 +196,7 @@ function ReservationDetail() {
         </div>
 
         {isEditModalOpen && (
-          <div className="mx-auto w-[60%] rounded-md border border-slate-200 p-8 dark:border-slate-800">
+          <div className="rounded-md border border-slate-200 p-8 dark:border-slate-800">
             <h3 className="pb-4 text-lg font-medium text-slate-800 dark:text-slate-200">
               Editing ...
             </h3>
