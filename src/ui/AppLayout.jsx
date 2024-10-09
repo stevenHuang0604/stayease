@@ -14,10 +14,33 @@ function AppLayout() {
     query: "(min-width: 640px)",
   });
 
+  function activeLinkStyling({ isActive }) {
+    return `flex items-center gap-2 rounded-md px-3 py-2 transition-all ${
+      isActive
+        ? "bg-violet-200 dark:bg-violet-800"
+        : "hover:bg-violet-100 dark:hover:bg-violet-900"
+    }`;
+  }
+
+  function activeLinkContent(Icon, title) {
+    const contentComponent = ({ isActive }) => (
+      <>
+        <Icon
+          className={`${isActive ? "text-violet-700 dark:text-violet-300" : "text-slate-400 dark:text-slate-600"}`}
+        />
+        <span className="hidden text-base font-semibold text-slate-600 md:block dark:text-slate-400">
+          {title}
+        </span>
+      </>
+    );
+
+    return contentComponent;
+  }
+
   return (
     <div className="flex h-screen flex-col">
       <header className="mx-auto w-full border-b-[1px] bg-violet-50 bg-opacity-30 dark:bg-violet-950">
-        <nav className="flex h-20 items-center px-8 py-3">
+        <div className="flex h-20 items-center px-8 py-3">
           <div className="h-full">
             <Link
               to={window.location.origin}
@@ -31,75 +54,20 @@ function AppLayout() {
               )}
             </Link>
           </div>
-          <div className="ml-auto flex items-center gap-4 text-lg">
-            <NavLink
-              to="/app"
-              end
-              className={({ isActive }) =>
-                `flex items-center gap-2 rounded-md px-3 py-2 transition-all ${
-                  isActive
-                    ? "bg-violet-200 dark:bg-violet-800"
-                    : "hover:bg-violet-100 dark:hover:bg-violet-900"
-                }`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  <HiOutlineHome
-                    className={`${isActive ? "text-violet-700 dark:text-violet-300" : "text-slate-400 dark:text-slate-600"}`}
-                  />
-                  <span className="hidden text-base font-semibold text-slate-600 md:block dark:text-slate-400">
-                    Home
-                  </span>
-                </>
-              )}
+          <nav className="ml-auto flex items-center gap-4 text-lg">
+            <NavLink to="/app" end className={activeLinkStyling}>
+              {activeLinkContent(HiOutlineHome, "Home")}
             </NavLink>
-            <NavLink
-              to="reservations"
-              className={({ isActive }) =>
-                `flex items-center gap-2 rounded-md px-3 py-2 transition-all ${
-                  isActive
-                    ? "bg-violet-200 dark:bg-violet-800"
-                    : "hover:bg-violet-100 dark:hover:bg-violet-900"
-                }`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  <HiOutlineCalendarDays
-                    className={`${isActive ? "text-violet-700 dark:text-violet-300" : "text-slate-400 dark:text-slate-600"}`}
-                  />
-                  <span className="hidden text-base font-semibold text-slate-600 md:block dark:text-slate-400">
-                    My Reservation
-                  </span>
-                </>
-              )}
+            <NavLink to="reservations" className={activeLinkStyling}>
+              {activeLinkContent(HiOutlineCalendarDays, "My Reservation")}
             </NavLink>
-            <NavLink
-              to="bookmarks"
-              className={({ isActive }) =>
-                `flex items-center gap-2 rounded-md px-3 py-2 transition-all ${
-                  isActive
-                    ? "bg-violet-200 dark:bg-violet-800"
-                    : "hover:bg-violet-100 dark:hover:bg-violet-900"
-                }`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  <HiOutlineBookmark
-                    className={`${isActive ? "text-violet-700 dark:text-violet-300" : "text-slate-400 dark:text-slate-600"}`}
-                  />
-                  <span className="hidden text-base font-semibold text-slate-600 md:block dark:text-slate-400">
-                    Bookmarks
-                  </span>
-                </>
-              )}
+            <NavLink to="bookmarks" className={activeLinkStyling}>
+              {activeLinkContent(HiOutlineBookmark, "Bookmarks")}
             </NavLink>
 
             <ModeButton />
-          </div>
-        </nav>
+          </nav>
+        </div>
       </header>
 
       <div className="flex-grow overflow-auto bg-slate-50 dark:bg-slate-950">
