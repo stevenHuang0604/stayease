@@ -9,33 +9,33 @@ import Logo from "../homepages/NavigationSection/Logo";
 import ModeButton from "./ModeButton";
 import { useMediaQuery } from "react-responsive";
 
+function activeLinkStyling({ isActive }) {
+  return `flex items-center gap-2 rounded-md px-3 py-2 transition-all ${
+    isActive
+      ? "bg-violet-200 dark:bg-violet-800"
+      : "hover:bg-violet-100 dark:hover:bg-violet-900"
+  }`;
+}
+
+function activeLinkContent(Icon, title) {
+  const contentComponent = ({ isActive }) => (
+    <>
+      <Icon
+        className={`${isActive ? "text-violet-700 dark:text-violet-300" : "text-slate-400 dark:text-slate-600"}`}
+      />
+      <span className="hidden text-base font-semibold text-slate-600 md:block dark:text-slate-400">
+        {title}
+      </span>
+    </>
+  );
+
+  return contentComponent;
+}
+
 function AppLayout() {
   const sm = useMediaQuery({
     query: "(min-width: 640px)",
   });
-
-  function activeLinkStyling({ isActive }) {
-    return `flex items-center gap-2 rounded-md px-3 py-2 transition-all ${
-      isActive
-        ? "bg-violet-200 dark:bg-violet-800"
-        : "hover:bg-violet-100 dark:hover:bg-violet-900"
-    }`;
-  }
-
-  function activeLinkContent(Icon, title) {
-    const contentComponent = ({ isActive }) => (
-      <>
-        <Icon
-          className={`${isActive ? "text-violet-700 dark:text-violet-300" : "text-slate-400 dark:text-slate-600"}`}
-        />
-        <span className="hidden text-base font-semibold text-slate-600 md:block dark:text-slate-400">
-          {title}
-        </span>
-      </>
-    );
-
-    return contentComponent;
-  }
 
   return (
     <div className="flex h-screen flex-col">
