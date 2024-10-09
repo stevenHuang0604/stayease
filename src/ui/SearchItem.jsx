@@ -66,7 +66,7 @@ function SearchItem({
         className="text-black dark:text-white"
         onClick={type !== "input" ? toggleModal : undefined}
       >
-        <div className="flex items-center gap-3 rounded-md p-1">
+        <div className="flex-vert-center gap-3 rounded-md p-1">
           {fieldIcon}
           {/* <FiSearch className="h-6 w-6 text-lg" /> */}
           <span className="flex w-full flex-col">
@@ -139,7 +139,7 @@ function SearchItem({
               <span className="font-medium text-slate-800 dark:text-slate-200">
                 {fieldName}
               </span>
-              <div className="flex items-center gap-2">
+              <div className="flex-vert-center gap-2">
                 <button
                   className="group rounded-full border border-slate-800 p-1 disabled:cursor-not-allowed disabled:border-slate-200 dark:border-slate-200 dark:disabled:border-slate-800"
                   onClick={handleGuestsMinus}
@@ -171,16 +171,16 @@ function SearchItem({
       {type === "room" && isOpen && (
         <div className="bottom-100 absolute left-0 z-10 mt-1 w-full">
           <div className="flex flex-col gap-2 rounded-lg border border-slate-300 bg-white p-4 shadow-lg dark:border-slate-700 dark:bg-black">
-            <div className="flex flex-col items-center justify-between gap-4">
+            <div className="flex-vert-center flex-col justify-between gap-4">
               {Object.entries(hotel.room_types).map(([roomType]) => (
                 <div
-                  className="flex w-full items-center justify-between"
+                  className="flex-vert-center w-full justify-between"
                   key={roomType}
                 >
                   <span className="font-medium text-slate-800 dark:text-slate-200">
                     {roomType}
                   </span>
-                  <div className="flex items-center gap-2">
+                  <div className="flex-vert-center gap-2">
                     <button
                       className="group rounded-full border border-slate-800 p-1 disabled:cursor-not-allowed disabled:border-slate-200 dark:border-slate-200 dark:disabled:border-slate-800"
                       onClick={(e) => handleRoomTypeMinus(e, roomType)}

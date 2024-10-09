@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-vert-center {
+    @apply flex items-center;
+  }
+
+  .flex-hori-center {
+    @apply flex justify-center;
+  }
+}

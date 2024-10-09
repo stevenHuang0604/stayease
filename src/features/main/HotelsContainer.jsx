@@ -14,7 +14,7 @@ function HotelsContainer() {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="flex flex-col justify-center gap-4 sm:flex-row lg:gap-8">
+        <div className="flex-hori-center flex-col gap-4 sm:flex-row lg:gap-8">
           {popularHotels.map((hotel) => (
             <HotelPreviewCard hotel={hotel} key={hotel.id} />
           ))}

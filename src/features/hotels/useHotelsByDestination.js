@@ -1,9 +1,11 @@
 import { useSearchParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { getHotelsByDestination } from "../../services/apiHotel";
+import { useEffect } from "react";
 
 export function useHotelsByDestination() {
+  const queryClient = useQueryClient();
   const [searchParams] = useSearchParams();
   const destination = searchParams.get("destination");
 
@@ -15,6 +17,12 @@ export function useHotelsByDestination() {
     queryKey: ["hotels", destination],
     queryFn: () => getHotelsByDestination(destination),
   });
+
+  // Remove query key from cache if no data in database
+  useEffect(() => {
+    if (hotels && hotels.length === 0)
+      queryClient.removeQueries({ queryKey: ["hotels", destination] });
+  }, [hotels, destination, queryClient]);
 
   return { hotels, isLoading, error };
 }
