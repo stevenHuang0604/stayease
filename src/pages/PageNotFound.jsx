@@ -5,7 +5,7 @@ function PageNotFound() {
   return (
     <main className="flex h-screen flex-col items-center justify-center">
       <h1 className="mb-8 text-4xl font-semibold">Page Not Found!</h1>
-      <Button to="/" size="large">
+      <Button size="large" onClick={() => window.history.go(-1)}>
         Go back to home page
         <HiOutlineArrowRight />
       </Button>
