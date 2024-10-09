@@ -63,11 +63,29 @@ StayEase is a modern, user-friendly hotel booking platform designed to simplify 
 
 ## Tech Stack
 
-- React: A JavaScript library for building user interfaces
-- React Router: Declarative routing for React applications
-- Tanstack Query: Powerful asynchronous state management for TS/JS, React, Solid, Vue and Svelte
-- TailwindCSS: A utility-first CSS framework for rapid UI development
-- Supabase: An open source Firebase alternative for building secure and performant Postgres backends
+This project leverages a modern and efficient tech stack:
+
+### Frontend
+
+- **Library**: React
+- **Routing**: React Router
+- **State Management & Data Fetching**: React Query
+
+### Styling
+
+- **CSS Framework**: TailwindCSS
+
+### Backend & Database
+
+- **Backend as a Service**: Supabase
+
+### Build & Development
+
+- **Build Tool**: Vite
+
+### Deployment
+
+- **Hosting Platform**: Vercel
 
 ## Getting Started
 
