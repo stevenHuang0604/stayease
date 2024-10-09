@@ -25,7 +25,7 @@ function Search() {
     <div className="sm:mx-auto">
       <div className="border-1 w-full rounded-lg px-2 py-2">
         <form
-          className="flex-center flex-col gap-4 lg:flex-row lg:gap-2"
+          className="fc flex-col gap-4 lg:flex-row lg:gap-2"
           onSubmit={handleSubmit}
         >
           <SearchItem

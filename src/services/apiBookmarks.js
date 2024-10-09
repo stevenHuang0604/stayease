@@ -3,7 +3,7 @@ import supabase from "./supabase";
 export async function getBookmarks() {
   const { data: bookmarks, error } = await supabase
     .from("bookmarks")
-    .select("*");
+    .select("*, hotels(*)");
 
   if (error) {
     console.error(error);
@@ -15,23 +15,24 @@ export async function getBookmarks() {
 
 export async function toggleBookmark(hotelId) {
   // check
-  const { data: bookmarks, error: readEError } = await supabase
+  const { data: bookmarks, error: readError } = await supabase
     .from("bookmarks")
     .select("*");
 
-  if (readEError) {
-    console.error(readEError);
+  if (readError) {
+    console.error(readError);
     throw new Error("Bookmarked hotels could not be loaded");
   }
 
-  const isAdded = bookmarks.some((bookmark) => bookmark.hotelId === hotelId);
+  // Check the hotel is already in the bookmarks or not
+  const isExisted = bookmarks.some((bookmark) => bookmark.hotelId === hotelId);
 
-  if (!isAdded) {
+  if (!isExisted) {
     // add bookmark
     const { data, error } = await supabase
       .from("bookmarks")
       .insert([{ hotelId }])
-      .select();
+      .select("*, hotels(*)");
 
     if (error) {
       console.error(error);

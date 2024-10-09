@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   HiOutlineBuildingStorefront,
   HiOutlineCurrencyDollar,
@@ -91,8 +91,8 @@ function ReservationDetail() {
     <main className="px-8 py-14 md:px-16 md:py-16">
       <div className="mx-auto flex flex-col gap-8 md:w-[80%]">
         <div className="overflow-hidden rounded-lg shadow-lg dark:shadow-slate-400/50">
-          <div className="flex items-center justify-between bg-violet-500 px-6 py-5 text-base font-medium text-slate-200 md:px-10 md:text-lg dark:text-slate-800">
-            <div className="flex items-center gap-4 text-xl font-semibold">
+          <div className="fvc justify-between bg-violet-500 px-6 py-5 text-base font-medium text-slate-200 md:px-10 md:text-lg dark:text-slate-800">
+            <div className="fvc gap-4 text-xl font-semibold">
               <HiOutlineHomeModern className="h-8 w-8" />
               <p>10 nights in {hotel.name}</p>
             </div>
@@ -105,23 +105,23 @@ function ReservationDetail() {
           </div>
 
           <section className="px-6 pb-3 pt-8 md:px-10">
-            <div className="flex items-center gap-4 py-2 text-base text-blue-500">
+            <div className="fvc gap-4 py-2 text-base text-blue-500">
               <FaLocationDot className="flex h-5 w-5 items-center justify-center" />
               <span>{`${hotel.city}, ${hotel.country}`}</span>
             </div>
 
-            <div className="mb-4 flex items-center justify-between">
+            <div className="fvc mb-4 justify-between">
               <h1 className="text-xl font-medium text-slate-800 dark:text-slate-200">
                 {hotel.name}
               </h1>
             </div>
 
-            <div className="flex items-center gap-4 py-2 text-lg font-medium text-slate-800 dark:text-slate-200">
+            <div className="fvc gap-4 py-2 text-lg font-medium text-slate-800 dark:text-slate-200">
               <HiOutlineUsers className="h-5 w-5 text-violet-500" />
               <p>{reservation.guests} guests</p>
             </div>
 
-            <div className="font-base flex items-center gap-4 py-2 text-lg font-medium text-slate-800 dark:text-slate-200">
+            <div className="font-base fvc gap-4 py-2 text-lg font-medium text-slate-800 dark:text-slate-200">
               <HiOutlineBuildingStorefront className="h-5 w-5 text-violet-500" />
               <p>
                 {Object.values(reservation.rooms).reduce(
@@ -132,7 +132,7 @@ function ReservationDetail() {
               </p>
             </div>
 
-            <div className="mb-auto mt-5 flex items-center gap-4 pb-4 text-base text-zinc-600 dark:text-zinc-400">
+            <div className="fvc mb-auto mt-5 gap-4 pb-4 text-base text-zinc-600 dark:text-zinc-400">
               <FaLocationArrow className="h-5 w-5" />
               <span className="border-b border-b-slate-800">
                 {hotel.address}
@@ -167,14 +167,14 @@ function ReservationDetail() {
             </div>
           </section>
 
-          <footer className="flex items-center justify-between px-6 py-4 text-xs text-slate-400 md:px-10 dark:text-slate-600">
+          <footer className="fvc justify-between px-6 py-4 text-xs text-slate-400 md:px-10 dark:text-slate-600">
             <Button
               variant="outline"
               color="primary"
               size="medium"
               onClick={handleToggleModal}
             >
-              <div className="flex items-center justify-center gap-2">
+              <div className="fc gap-2">
                 <span>
                   <HiPencil />
                 </span>

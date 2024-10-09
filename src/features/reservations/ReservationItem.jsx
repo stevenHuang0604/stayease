@@ -86,14 +86,14 @@ function ReservationItem({ reservation }) {
           </Button>
         ) : (
           <>
-            <div className="flex items-center justify-center gap-4 text-lg">
+            <div className="fc gap-4 text-lg">
               <Link
                 to={
                   window.location.pathname === "/"
                     ? window.location.origin
                     : `/app/reservations/${reservation.id}`
                 }
-                className="flex items-center justify-center gap-4 text-violet-500"
+                className="fc gap-4 text-violet-500"
               >
                 <span>
                   <HiEye />
@@ -102,7 +102,7 @@ function ReservationItem({ reservation }) {
               </Link>
 
               <button
-                className="flex items-center justify-center gap-4 text-violet-500"
+                className="fc gap-4 text-violet-500"
                 onClick={handleDelete}
               >
                 <span>
@@ -122,7 +122,7 @@ function ReservationItem({ reservation }) {
                   ? window.location.origin
                   : `/app/reservations/${reservation.id}`
               }
-              className="flex items-center justify-center gap-4 text-violet-500"
+              className="fc gap-4 text-violet-500"
             >
               <span>
                 <HiEye />
@@ -130,10 +130,7 @@ function ReservationItem({ reservation }) {
               <span className="hidden lg:block">Details</span>
             </Link>
 
-            <button
-              className="flex items-center justify-center gap-4 text-violet-500"
-              onClick={handleDelete}
-            >
+            <button className="fc gap-4 text-violet-500" onClick={handleDelete}>
               <span>
                 <HiTrash />
               </span>

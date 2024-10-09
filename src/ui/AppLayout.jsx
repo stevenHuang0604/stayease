@@ -10,7 +10,7 @@ import ModeButton from "./ModeButton";
 import { useMediaQuery } from "react-responsive";
 
 function activeLinkStyling({ isActive }) {
-  return `flex-vert-center gap-2 rounded-md px-3 py-2 transition-all ${
+  return `fvc gap-2 rounded-md px-3 py-2 transition-all ${
     isActive
       ? "bg-violet-200 dark:bg-violet-800"
       : "hover:bg-violet-100 dark:hover:bg-violet-900"
@@ -40,12 +40,9 @@ function AppLayout() {
   return (
     <div className="flex h-screen flex-col">
       <header className="mx-auto w-full border-b-[1px] bg-violet-50 bg-opacity-30 dark:bg-violet-950">
-        <div className="flex-vert-center h-20 px-8 py-3">
+        <div className="fvc h-20 px-8 py-3">
           <div className="h-full">
-            <Link
-              to={window.location.origin}
-              className="flex-vert-center h-full gap-4"
-            >
+            <Link to={window.location.origin} className="fvc h-full gap-4">
               <Logo />
               {sm && (
                 <span className="font-Agbalumo text-2xl font-bold tracking-wide text-violet-600 dark:text-violet-100">
@@ -54,7 +51,7 @@ function AppLayout() {
               )}
             </Link>
           </div>
-          <nav className="flex-vert-center ml-auto gap-4 text-lg">
+          <nav className="fvc ml-auto gap-4 text-lg">
             <NavLink to="/app" end className={activeLinkStyling}>
               {activeLinkContent(HiOutlineHome, "Home")}
             </NavLink>

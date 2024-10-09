@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 @layer components {
-  .flex-center {
+  .fc {
     @apply flex items-center justify-center;
   }
 
-  .flex-vert-center {
+  .fvc {
     @apply flex items-center;
   }
 
-  .flex-hori-center {
+  .fhc {
     @apply flex justify-center;
   }
 }

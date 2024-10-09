@@ -7,7 +7,7 @@ function BookmarksContainer() {
 
   return (
     <div className="p-4 lg:p-8">
-      <div className="flex items-center justify-between">
+      <div className="fvc justify-between">
         <h1 className="text-3xl font-semibold text-violet-700 dark:text-violet-300">
           My Bookmarks
         </h1>

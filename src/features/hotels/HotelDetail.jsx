@@ -78,13 +78,13 @@ function HotelDetail() {
     <main className="px-14 py-14 md:px-16 md:py-16">
       <Search />
 
-      <div className="mx-auto mt-16 flex flex-col items-center">
+      <div className="fvc mx-auto mt-16 flex-col">
         <img src={hotel.image} alt={hotel.name} className="w-[44rem]" />
 
         <div className="mt-8 flex flex-col gap-4 lg:flex-row">
           <div className="flex flex-col gap-4">
             <div className="rounded-md border p-8 shadow-sm">
-              <div className="flex items-center justify-between">
+              <div className="fvc justify-between">
                 <h1 className="text-3xl font-medium text-slate-800 dark:text-slate-200">
                   {hotel.name}
                 </h1>
@@ -113,19 +113,19 @@ function HotelDetail() {
                 {hotel.description}
               </p>
 
-              <div className="mt-6 flex items-center gap-2 text-base text-slate-800 dark:text-slate-200">
+              <div className="fvc mt-6 gap-2 text-base text-slate-800 dark:text-slate-200">
                 <FaBed className="text-violet-600 dark:text-violet-400" />
                 <span className="font-medium">Available Room: </span>
                 {hotel.available_rooms} rooms
               </div>
 
-              <div className="mt-2 flex items-center gap-2 text-base text-slate-800 dark:text-slate-200">
+              <div className="fvc mt-2 gap-2 text-base text-slate-800 dark:text-slate-200">
                 <FaMoneyBill1Wave className="text-violet-600 dark:text-violet-400" />
                 <span className="font-medium">Base Price: </span>$
                 {hotel.base_price}
               </div>
 
-              <div className="mt-7 flex items-center gap-1 text-base text-zinc-600 dark:text-zinc-400">
+              <div className="fvc mt-7 gap-1 text-base text-zinc-600 dark:text-zinc-400">
                 <FaLocationArrow />
                 <span className="border-b border-b-slate-800">
                   {hotel.address}

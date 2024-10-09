@@ -10,24 +10,39 @@ import {
 import { useUpdateBookmark } from "../bookmarks/useUpdateBookmark";
 import Rating from "../../ui/Rating";
 import Location from "../../ui/Location";
+import { useEffect, useState } from "react";
 
 function HotelListItem({ hotel, bookmarks }) {
   const { updateBookmark } = useUpdateBookmark();
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // lazy loading image
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => setImageLoaded(true);
+    img.src = hotel.image;
+  }, [hotel.image]);
 
   return (
     <div className="flex flex-col overflow-hidden rounded-md border shadow-sm md:flex-row dark:shadow-slate-400/50">
-      <img
-        src={hotel.image}
-        alt={hotel.name}
-        className="object-cover md:w-[35%]"
-      />
+      {imageLoaded ? (
+        <img
+          src={hotel.image}
+          alt={hotel.name}
+          className="object-cover md:w-[35%]"
+        />
+      ) : (
+        <div className="h-full bg-slate-500 object-cover py-10 text-center text-lg font-semibold text-slate-50 md:w-[35%] dark:text-slate-900">
+          Image Loading...
+        </div>
+      )}
 
       <div className="grow p-6 pt-4">
         <span className="text-xs text-slate-400 dark:text-slate-600">
           {hotel.price_range}
         </span>
 
-        <div className="flex items-center justify-between">
+        <div className="fvc justify-between">
           <h1 className="text-2xl font-medium text-slate-800 dark:text-slate-200">
             {hotel.name}
           </h1>
@@ -54,18 +69,18 @@ function HotelListItem({ hotel, bookmarks }) {
           {hotel.description}
         </p>
 
-        <div className="mt-4 flex items-center gap-2 text-sm text-slate-800 dark:text-slate-200">
+        <div className="fvc mt-4 gap-2 text-sm text-slate-800 dark:text-slate-200">
           <FaBed className="text-violet-600 dark:text-violet-400" />
           <span className="font-medium">Available Room: </span>
           {hotel.available_rooms} rooms
         </div>
 
-        <div className="mt-2 flex items-center gap-2 text-sm text-slate-800 dark:text-slate-200">
+        <div className="fvc mt-2 gap-2 text-sm text-slate-800 dark:text-slate-200">
           <FaMoneyBill1Wave className="text-violet-600 dark:text-violet-400" />
           <span className="font-medium">Base Price: </span>${hotel.base_price}
         </div>
 
-        <div className="mt-5 flex flex-col items-start justify-center gap-4 text-sm text-zinc-600 lg:flex-row lg:items-center dark:text-zinc-400">
+        <div className="fhc mt-5 flex-col items-start gap-4 text-sm text-zinc-600 lg:flex-row lg:items-center dark:text-zinc-400">
           <div className="flex items-center gap-1">
             <FaLocationArrow />
             <span className="border-b border-b-slate-800">{hotel.address}</span>

@@ -3,22 +3,16 @@ import {
   FaBed,
   FaBookmark,
   FaLocationArrow,
-  FaLocationDot,
   FaMoneyBill1Wave,
-  FaStar,
 } from "react-icons/fa6";
-import { useHotelById } from "../hotels/useHotelById";
-import Spinner from "../../ui/Spinner";
+
 import { useUpdateBookmark } from "./useUpdateBookmark";
 import Rating from "../../ui/Rating";
 import Location from "../../ui/Location";
 
 function BookmarkItem({ bookmark }) {
-  const { hotels, isLoading } = useHotelById(bookmark.hotelId);
   const { updateBookmark } = useUpdateBookmark();
-
-  if (isLoading) return <Spinner />;
-  const hotel = hotels[0];
+  const hotel = bookmark.hotels;
 
   return (
     <div className="flex flex-col overflow-hidden rounded-md border shadow-sm dark:shadow-slate-400/50">
@@ -33,7 +27,7 @@ function BookmarkItem({ bookmark }) {
           {hotel.price_range}
         </span>
 
-        <div className="flex items-center justify-between">
+        <div className="fvc justify-between">
           <h1 className="text-2xl font-medium text-slate-800 dark:text-slate-200">
             {hotel.name}
           </h1>
@@ -56,13 +50,13 @@ function BookmarkItem({ bookmark }) {
           {hotel.description}
         </p>
 
-        <div className="mt-4 flex items-center gap-2 text-sm text-slate-800 dark:text-slate-200">
+        <div className="fvc mt-4 gap-2 text-sm text-slate-800 dark:text-slate-200">
           <FaBed className="text-violet-600 dark:text-violet-400" />
           <span className="font-medium">Available Room: </span>
           {hotel.available_rooms} rooms
         </div>
 
-        <div className="mt-2 flex items-center gap-2 text-sm text-slate-800 dark:text-slate-200">
+        <div className="fvc mt-2 gap-2 text-sm text-slate-800 dark:text-slate-200">
           <FaMoneyBill1Wave className="text-violet-600 dark:text-violet-400" />
           <span className="font-medium">Base Price: </span>${hotel.base_price}
         </div>

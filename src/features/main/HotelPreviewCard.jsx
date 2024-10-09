@@ -40,9 +40,12 @@ function HotelPreviewCard({ hotel }) {
           <Location city={hotel.city} country={hotel.country} />
         </div>
 
-        <div className="mt-auto rounded-md bg-violet-600 py-2 text-center text-sm font-medium text-slate-50 xl:text-base dark:bg-violet-400 dark:text-slate-900">
-          <Link to={`hotels/${hotel.id}`}>Check details</Link>
-        </div>
+        <Link
+          to={`hotels/${hotel.id}`}
+          className="mt-auto rounded-md bg-violet-600 py-2 text-center text-sm font-medium text-slate-50 xl:text-base dark:bg-violet-400 dark:text-slate-900"
+        >
+          Check details
+        </Link>
       </div>
     </div>
   );
