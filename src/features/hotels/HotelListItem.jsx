@@ -53,7 +53,7 @@ function HotelListItem({ hotel, bookmarks }) {
             {bookmarks?.some((bookmark) => bookmark.hotelId === hotel.id) ? (
               <FaBookmark className="text-xl text-violet-500" />
             ) : (
-              <FaRegBookmark className="text-xl" />
+              <FaRegBookmark className="text-xl text-slate-50" />
             )}
           </button>
         </div>

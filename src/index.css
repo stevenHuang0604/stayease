@@ -14,4 +14,12 @@
   .fhc {
     @apply flex justify-center;
   }
+
+  .page-layout {
+    @apply flex min-h-full flex-col px-4 py-4 md:px-8 md:py-8 xl:px-14 xl:py-14;
+  }
+
+  .search-content {
+    @apply cursor-pointer border-b-2 border-b-transparent bg-white placeholder-slate-900 outline-none placeholder:text-sm placeholder:font-medium hover:border-b-violet-600 focus:border-b-violet-600 focus:outline-none dark:bg-black dark:placeholder-slate-50 dark:hover:border-b-violet-400 dark:focus:border-b-violet-400;
+  }
 }

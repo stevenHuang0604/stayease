@@ -10,8 +10,8 @@ function ReservationsContainer({ page = "reservations" }) {
     query: "(min-width: 768px)",
   });
 
-  let reservations;
   const { data, isLoading } = useReservations();
+  let reservations;
 
   if (isLoading) return <Spinner />;
 

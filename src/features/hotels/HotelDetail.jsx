@@ -28,7 +28,7 @@ function formatTime(time) {
 }
 
 function HotelDetail() {
-  const [hotel] = useLoaderData();
+  const hotel = useLoaderData();
   const { bookmarks } = useBookmarks();
   const { updateBookmark } = useUpdateBookmark();
   const [checkInDate, setCheckInDate] = useState("");
@@ -228,7 +228,7 @@ function HotelDetail() {
 }
 
 export async function loader({ params }) {
-  const hotel = await getHotelById(params.id);
+  const hotel = await getHotelById(params.hotelId);
 
   return hotel;
 }

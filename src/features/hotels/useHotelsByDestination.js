@@ -18,7 +18,7 @@ export function useHotelsByDestination() {
     queryFn: () => getHotelsByDestination(destination),
   });
 
-  // Remove query key from cache if no data in database
+  // Remove query key from cache if there is no data in the database
   useEffect(() => {
     if (hotels && hotels.length === 0)
       queryClient.removeQueries({ queryKey: ["hotels", destination] });

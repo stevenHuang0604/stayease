@@ -4,13 +4,18 @@ import { useHotelsByDestination } from "./useHotelsByDestination";
 import Spinner from "../../ui/Spinner";
 import HotelListItem from "./HotelListItem";
 import { useBookmarks } from "../bookmarks/useBookmarks";
+import ErrorFetch from "../../ui/ErrorFetch";
 
 function HotelList() {
   const [searchParams] = useSearchParams();
-  const { hotels, isLoading } = useHotelsByDestination();
+  const { hotels, isLoading, error } = useHotelsByDestination();
   const { bookmarks } = useBookmarks();
 
   const destination = searchParams.get("destination");
+
+  if (error) {
+    return <ErrorFetch error={error} />;
+  }
 
   return (
     <div className="mt-8 p-8">

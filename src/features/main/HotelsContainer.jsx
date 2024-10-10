@@ -1,9 +1,14 @@
+import ErrorFetch from "../../ui/ErrorFetch";
 import Spinner from "../../ui/Spinner";
 import HotelPreviewCard from "./HotelPreviewCard";
 import { usePopularHotels } from "./usePopularHotels";
 
 function HotelsContainer() {
-  const { popularHotels, isLoading } = usePopularHotels();
+  const { popularHotels, isLoading, error } = usePopularHotels();
+
+  if (error) {
+    return <ErrorFetch error={error} />;
+  }
 
   return (
     <div className="mt-8 p-0 md:p-8">

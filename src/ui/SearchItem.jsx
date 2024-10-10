@@ -15,7 +15,6 @@ function SearchItem({
   hotel,
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const searchId = fieldName.toLowerCase();
 
   function toggleModal() {
     setIsOpen(!isOpen);
@@ -27,7 +26,6 @@ function SearchItem({
 
   function handleGuestsMinus(e) {
     e.preventDefault();
-
     onChange(value - 1);
   }
 
@@ -39,49 +37,59 @@ function SearchItem({
   function handleRoomTypeMinus(e, roomType) {
     e.preventDefault();
 
-    onChange((prevRooms) => {
-      const updatedRooms = { ...prevRooms };
-      if (updatedRooms[roomType]) {
-        updatedRooms[roomType] = Math.max(0, updatedRooms[roomType] - 1);
-        if (updatedRooms[roomType] === 0) {
-          delete updatedRooms[roomType];
-        }
+    // onChange((prevRooms) => {
+    //   const updatedRooms = { ...prevRooms };
+    //   if (updatedRooms[roomType]) {
+    //     updatedRooms[roomType] = Math.max(0, updatedRooms[roomType] - 1);
+    //     if (updatedRooms[roomType] === 0) {
+    //       delete updatedRooms[roomType];
+    //     }
+    //   }
+    //   return updatedRooms;
+    // });
+
+    const updatedRooms = { ...value };
+    if (updatedRooms[roomType]) {
+      updatedRooms[roomType] = Math.max(0, updatedRooms[roomType] - 1);
+      if (updatedRooms[roomType] === 0) {
+        delete updatedRooms[roomType];
       }
-      return updatedRooms;
-    });
+    }
+
+    onChange(updatedRooms);
   }
 
   function handleRoomTypePlus(e, roomType) {
     e.preventDefault();
 
-    onChange((prevRooms) => ({
-      ...prevRooms,
-      [roomType]: (prevRooms[roomType] || 0) + 1,
-    }));
+    // onChange((prevRooms) => ({
+    //   ...prevRooms,
+    //   [roomType]: (prevRooms[roomType] || 0) + 1,
+    // }));
+
+    const updatedRooms = { ...value, [roomType]: (value[roomType] || 0) + 1 };
+
+    onChange(updatedRooms);
   }
 
   return (
     <div className="relative h-14 w-full rounded-lg border border-slate-300 bg-white p-1 lg:w-auto dark:border-slate-700 dark:bg-black">
       <div
-        className="text-black dark:text-white"
+        className="h-full text-black dark:text-white"
         onClick={type !== "input" ? toggleModal : undefined}
       >
         <div className="fvc gap-3 rounded-md p-1">
           {fieldIcon}
-          {/* <FiSearch className="h-6 w-6 text-lg" /> */}
           <span className="flex w-full flex-col">
             {type === "input" ? (
               <label
-                htmlFor={searchId}
+                htmlFor={fieldName}
                 className="text-xs text-slate-400 dark:text-slate-600"
               >
                 {fieldName}
               </label>
             ) : (
-              <span
-                htmlFor={searchId}
-                className="text-xs text-slate-400 dark:text-slate-600"
-              >
+              <span className="text-xs text-slate-400 dark:text-slate-600">
                 {fieldName}
               </span>
             )}
@@ -89,28 +97,29 @@ function SearchItem({
             {type === "input" && (
               <input
                 type="text"
+                autoComplete="off"
                 value={value}
                 onChange={onChange}
-                id={searchId}
+                id={fieldName}
                 placeholder={placeholder}
-                className="border-b-2 border-b-transparent bg-white placeholder-slate-900 outline-none placeholder:text-sm placeholder:font-medium hover:border-b-violet-600 focus:border-b-violet-600 focus:outline-none dark:bg-black dark:placeholder-slate-50 dark:hover:border-b-violet-400 dark:focus:border-b-violet-400"
+                className="search-content"
               />
             )}
 
             {type === "date" && (
-              <div className="cursor-pointer border-b-2 border-b-transparent bg-white placeholder-slate-900 outline-none placeholder:text-sm placeholder:font-medium hover:border-b-violet-600 focus:border-b-violet-600 focus:outline-none dark:bg-black dark:placeholder-slate-50 dark:hover:border-b-violet-400 dark:focus:border-b-violet-400">
+              <div className="search-content">
                 {value ? formatDate(value) : placeholder}
               </div>
             )}
 
             {type === "guest" && (
-              <div className="cursor-pointer border-b-2 border-b-transparent bg-white placeholder-slate-900 outline-none placeholder:text-sm placeholder:font-medium hover:border-b-violet-600 focus:border-b-violet-600 focus:outline-none dark:bg-black dark:placeholder-slate-50 dark:hover:border-b-violet-400 dark:focus:border-b-violet-400">
+              <div className="search-content">
                 {value ? `${value} ${fieldName}` : placeholder}
               </div>
             )}
 
             {type === "room" && (
-              <div className="cursor-pointer border-b-2 border-b-transparent bg-white placeholder-slate-900 outline-none placeholder:text-sm placeholder:font-medium hover:border-b-violet-600 focus:border-b-violet-600 focus:outline-none dark:bg-black dark:placeholder-slate-50 dark:hover:border-b-violet-400 dark:focus:border-b-violet-400">
+              <div className="search-content">
                 {Object.keys(value).length !== 0
                   ? `Total ${Object.values(value).reduce((acc, cur) => acc + cur, 0)} Rooms`
                   : placeholder}

@@ -1,9 +1,14 @@
+import ErrorFetch from "../../ui/ErrorFetch";
 import Spinner from "../../ui/Spinner";
 import BookmarkItem from "./BookmarkItem";
 import { useBookmarks } from "./useBookmarks";
 
 function BookmarksContainer() {
-  const { bookmarks, isLoading } = useBookmarks();
+  const { bookmarks, isLoading, error } = useBookmarks();
+
+  if (error) {
+    return <ErrorFetch error={error} />;
+  }
 
   return (
     <div className="p-4 lg:p-8">

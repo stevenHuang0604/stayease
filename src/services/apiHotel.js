@@ -34,7 +34,8 @@ export async function getHotelById(id) {
   const { data: hotel, error } = await supabase
     .from("hotels")
     .select("*")
-    .eq("id", id);
+    .eq("id", id)
+    .single();
 
   if (error) {
     console.error(error);

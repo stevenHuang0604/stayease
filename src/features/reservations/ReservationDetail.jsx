@@ -13,53 +13,113 @@ import { getReservationById } from "../../services/apiReservations";
 import Spinner from "../../ui/Spinner";
 import { formatTime, formatDate } from "../../helpers/formatDate";
 import Button from "../../ui/Button";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import SearchItem from "../../ui/SearchItem";
 import { FiCalendar, FiUsers } from "react-icons/fi";
 
 import { useUpdateReservation } from "./useUpdateReservation";
 import { useReservationById } from "./useReservationById";
 
+const initialState = {
+  checkInDate: "",
+  checkOutDate: "",
+  guests: 1,
+  rooms: {},
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "origin_state_inject":
+      return {
+        ...action.payload,
+      };
+
+    case "check_in_date_edit":
+      return {
+        ...state,
+        checkInDate: action.payload,
+      };
+    case "check_out_date_edit":
+      return {
+        ...state,
+        checkOutDate: action.payload,
+      };
+    case "guests_edit":
+      return {
+        ...state,
+        guests: action.payload,
+      };
+
+    case "rooms_edit":
+      return {
+        ...state,
+        rooms: action.payload,
+      };
+    default:
+      throw new Error("Edit failed!");
+  }
+};
+
 function ReservationDetail() {
   const { data, isLoading: isFetching } = useReservationById();
-  // const [reservation] = useLoaderData();
-  const reservation = data === undefined ? {} : data[0];
+  const reservation = data || {};
 
   const { mutate: updateReservation, isLoading: isUpdating } =
     useUpdateReservation();
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [checkInDate, setCheckInDate] = useState("");
-  const [checkOutDate, setCheckOutDate] = useState("");
-  const [guests, setGuests] = useState(1);
-  const [rooms, setRooms] = useState({});
+  // const [checkInDate, setCheckInDate] = useState("");
+  // const [checkOutDate, setCheckOutDate] = useState("");
+  // const [guests, setGuests] = useState(1);
+  // const [rooms, setRooms] = useState({});
+
+  const [formData, dispatch] = useReducer(reducer, initialState);
+
+  console.log(formData);
 
   useEffect(() => {
-    if (reservation) {
-      setCheckInDate(reservation.check_in_date);
-      setCheckOutDate(reservation.check_out_date);
-      setGuests(reservation.guests);
-      setRooms(reservation.rooms);
+    // if (reservation) {
+    //   setCheckInDate(reservation.check_in_date);
+    //   setCheckOutDate(reservation.check_out_date);
+    //   setGuests(reservation.guests);
+    //   setRooms(reservation.rooms);
+    // }
+
+    if (reservation && !formData.checkInDate) {
+      console.log(reservation);
+      dispatch({
+        type: "origin_state_inject",
+        payload: {
+          checkInDate: reservation.check_in_date,
+          checkOutDate: reservation.check_out_date,
+          guests: reservation.guests,
+          rooms: reservation.rooms,
+        },
+      });
     }
-  }, [reservation]);
+  }, [reservation, formData]);
 
   if (isFetching || isUpdating) return <Spinner />;
   const hotel = reservation?.hotels;
 
   function handleCheckInDateChange(date) {
-    setCheckInDate(formatDate(date));
+    // setCheckInDate(formatDate(date));
+    dispatch({ type: "check_in_date_edit", payload: formatDate(date) });
   }
 
   function handleCheckOutDateChange(date) {
-    setCheckOutDate(formatDate(date));
+    // setCheckOutDate(formatDate(date));
+    dispatch({ type: "check_out_date_edit", payload: formatDate(date) });
   }
 
   function handleGuestsChange(newGuests) {
-    setGuests(newGuests);
+    // setGuests(newGuests);
+    dispatch({ type: "guests_edit", payload: newGuests });
   }
 
   function handleRoomsChange(newRooms) {
-    setRooms(newRooms);
+    // setRooms(newRooms);
+    dispatch({ type: "rooms_edit", payload: newRooms });
   }
 
   function handleSubmit(e) {
@@ -67,15 +127,28 @@ function ReservationDetail() {
 
     setIsEditModalOpen(false);
 
-    const roomLength = Object.values(rooms).reduce((acc, cur) => acc + cur, 0);
+    const roomLength = Object.values(formData.rooms).reduce(
+      (acc, cur) => acc + cur,
+      0,
+    );
 
-    if (checkInDate && checkOutDate && roomLength) {
+    // if (checkInDate && checkOutDate && roomLength) {
+    //   const newReservation = {
+    //     createdAt: new Date().toISOString(),
+    //     check_in_date: checkInDate,
+    //     check_out_date: checkOutDate,
+    //     rooms,
+    //     guests,
+    //     hotelId: hotel.id,
+    //   };
+
+    if (formData.checkInDate && formData.checkOutDate && roomLength) {
       const newReservation = {
         createdAt: new Date().toISOString(),
-        check_in_date: checkInDate,
-        check_out_date: checkOutDate,
-        rooms,
-        guests,
+        check_in_date: formData.checkInDate,
+        check_out_date: formData.checkOutDate,
+        rooms: formData.rooms,
+        guests: formData.guests,
         hotelId: hotel.id,
       };
 
@@ -206,7 +279,7 @@ function ReservationDetail() {
                   fieldName="Check in"
                   placeholder="Select check-in day"
                   fieldIcon={<FiCalendar className="h-6 w-6 text-lg" />}
-                  value={checkInDate}
+                  value={formData.checkInDate}
                   onChange={handleCheckInDateChange}
                   type="date"
                 />
@@ -215,7 +288,7 @@ function ReservationDetail() {
                   fieldName="Check out"
                   placeholder="Select check-out day"
                   fieldIcon={<FiCalendar className="h-6 w-6 text-lg" />}
-                  value={checkOutDate}
+                  value={formData.checkOutDate}
                   onChange={handleCheckOutDateChange}
                   type="date"
                 />
@@ -224,7 +297,7 @@ function ReservationDetail() {
                   fieldName="Guests"
                   placeholder="2 Guests"
                   fieldIcon={<FiUsers className="h-6 w-6 text-lg" />}
-                  value={guests}
+                  value={formData.guests}
                   onChange={handleGuestsChange}
                   type="guest"
                 />
@@ -233,7 +306,7 @@ function ReservationDetail() {
                   fieldName="Rooms"
                   placeholder="Choose room type"
                   fieldIcon={<FiUsers className="h-6 w-6 text-lg" />}
-                  value={rooms}
+                  value={formData.rooms}
                   onChange={handleRoomsChange}
                   type="room"
                   hotel={hotel}
