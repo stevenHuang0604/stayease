@@ -75,8 +75,6 @@ function ReservationDetail() {
 
   const [formData, dispatch] = useReducer(reducer, initialState);
 
-  console.log(formData);
-
   useEffect(() => {
     // if (reservation) {
     //   setCheckInDate(reservation.check_in_date);
@@ -85,8 +83,7 @@ function ReservationDetail() {
     //   setRooms(reservation.rooms);
     // }
 
-    if (reservation && !formData.checkInDate) {
-      console.log(reservation);
+    if (reservation && formData.checkInDate === "") {
       dispatch({
         type: "origin_state_inject",
         payload: {
