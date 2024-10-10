@@ -6,6 +6,7 @@ function Button({
   size = "medium",
   to,
   onClick,
+  ariaLabel,
   children,
 }) {
   let className = "fvc rounded-lg font-semibold tracking-wide ";
@@ -70,7 +71,13 @@ function Button({
   const Element = to ? Link : "button";
 
   return (
-    <Element to={to} className={className} onClick={onClick}>
+    <Element
+      to={to}
+      className={className}
+      onClick={onClick}
+      role="button"
+      aria-label={ariaLabel}
+    >
       {children}
     </Element>
   );
