@@ -20,7 +20,7 @@ function TestimonialItem({ name, feedback, title, avatar }) {
               <img
                 src={avatar}
                 className="w-fill h-full object-cover"
-                alt={users.name}
+                alt={name}
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center bg-slate-300 text-slate-500 dark:bg-slate-700">
