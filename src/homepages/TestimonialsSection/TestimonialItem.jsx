@@ -1,4 +1,5 @@
 import { useState, useEffect, memo } from "react";
+import users from "../../utils/users";
 
 function TestimonialItem({ name, feedback, title, avatar }) {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -16,7 +17,11 @@ function TestimonialItem({ name, feedback, title, avatar }) {
         <div className="flex items-center justify-start gap-3 md:flex-col lg:flex-row">
           <div className="h-12 w-12 overflow-hidden rounded-full">
             {imageLoaded ? (
-              <img src={avatar} className="w-fill h-full object-cover" />
+              <img
+                src={avatar}
+                className="w-fill h-full object-cover"
+                alt={users.name}
+              />
             ) : (
               <div className="flex h-full w-full items-center justify-center bg-slate-300 text-slate-500 dark:bg-slate-700">
                 {name.charAt(0)}
@@ -24,9 +29,9 @@ function TestimonialItem({ name, feedback, title, avatar }) {
             )}
           </div>
           <div className="flex flex-col justify-center gap-[2px]">
-            <h4 className="text-lg font-bold text-slate-800 md:text-base dark:text-slate-200">
+            <h3 className="text-lg font-bold text-slate-800 md:text-base dark:text-slate-200">
               {name}
-            </h4>
+            </h3>
             <span className="text-xs text-slate-500">{title}</span>
           </div>
         </div>

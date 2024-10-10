@@ -81,6 +81,7 @@ function ReservationItem({ reservation }) {
             color="secondary"
             size="medium"
             onClick={handleToggleModal}
+            aria-label="More"
           >
             <HiOutlineEllipsisVertical />
           </Button>
