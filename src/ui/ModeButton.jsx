@@ -12,7 +12,7 @@ function ModeButton() {
       color="primary"
       size="medium"
       onClick={toggleDarkMode}
-      aria-labelledby="mode switch button"
+      aria-label="mode switch button"
     >
       {isDarkMode ? <FaRegSun /> : <FaRegMoon />}
     </Button>
