@@ -27,12 +27,12 @@ function BookmarkItem({ bookmark }) {
           {hotel.price_range}
         </span>
 
-        <div className="fvc justify-between">
+        <div className="flex items-start justify-between">
           <h1 className="text-2xl font-medium text-slate-800 dark:text-slate-200">
             {hotel.name}
           </h1>
           <button
-            className="cursor-pointer"
+            className="cursor-pointer pt-2"
             onClick={() => updateBookmark(hotel.id)}
           >
             <FaBookmark className="text-xl text-violet-500" />

@@ -97,7 +97,7 @@ function HotelDetail() {
                   ) ? (
                     <FaBookmark className="text-xl text-violet-500" />
                   ) : (
-                    <FaRegBookmark className="text-xl" />
+                    <FaRegBookmark className="text-xl dark:text-slate-50" />
                   )}
                 </button>
               </div>
