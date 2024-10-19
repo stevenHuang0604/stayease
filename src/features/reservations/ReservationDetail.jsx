@@ -13,7 +13,7 @@ import { getReservationById } from "../../services/apiReservations";
 import Spinner from "../../ui/Spinner";
 import { formatTime, formatDate } from "../../helpers/formatDate";
 import Button from "../../ui/Button";
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useMemo, useReducer, useState } from "react";
 import SearchItem from "../../ui/SearchItem";
 import { FiCalendar, FiUsers } from "react-icons/fi";
 
@@ -62,7 +62,11 @@ const reducer = (state, action) => {
 
 function ReservationDetail() {
   const { data, isLoading: isFetching } = useReservationById();
-  const reservation = data || {};
+
+  // prevent from the dependencies of useEffect Hook change on every render.
+  const reservation = useMemo(() => {
+    return data || {};
+  }, [data]);
 
   const { mutate: updateReservation, isLoading: isUpdating } =
     useUpdateReservation();
@@ -83,7 +87,7 @@ function ReservationDetail() {
     //   setRooms(reservation.rooms);
     // }
 
-    if (reservation && formData.checkInDate === "") {
+    if (reservation === data && formData.checkInDate === "") {
       dispatch({
         type: "origin_state_inject",
         payload: {
@@ -94,7 +98,7 @@ function ReservationDetail() {
         },
       });
     }
-  }, [reservation, formData]);
+  }, [reservation, formData, data]);
 
   if (isFetching || isUpdating) return <Spinner />;
   const hotel = reservation?.hotels;
