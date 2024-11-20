@@ -1,5 +1,4 @@
-import { useState, useEffect, memo } from "react";
-import users from "../../utils/users";
+import { useState, useEffect } from "react";
 
 function TestimonialItem({ name, feedback, title, avatar }) {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -43,5 +42,4 @@ function TestimonialItem({ name, feedback, title, avatar }) {
   );
 }
 
-// use React.memo to prevent unnecessarily render
-export default memo(TestimonialItem);
+export default TestimonialItem;

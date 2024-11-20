@@ -11,7 +11,11 @@ import { FaLocationArrow, FaLocationDot } from "react-icons/fa6";
 import { getReservationById } from "../../services/apiReservations";
 
 import Spinner from "../../ui/Spinner";
-import { formatTime, formatDate } from "../../helpers/formatDate";
+import {
+  formatTime,
+  formatDate,
+  subtractDates,
+} from "../../helpers/formatDate";
 import Button from "../../ui/Button";
 import { useEffect, useMemo, useReducer, useState } from "react";
 import SearchItem from "../../ui/SearchItem";
@@ -63,30 +67,20 @@ const reducer = (state, action) => {
 function ReservationDetail() {
   const { data, isLoading: isFetching } = useReservationById();
 
+  const { mutate: updateReservation, isLoading: isUpdating } =
+    useUpdateReservation();
+
+  const [formData, dispatch] = useReducer(reducer, initialState);
+
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
   // prevent from the dependencies of useEffect Hook change on every render.
   const reservation = useMemo(() => {
     return data || {};
   }, [data]);
 
-  const { mutate: updateReservation, isLoading: isUpdating } =
-    useUpdateReservation();
-
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  // const [checkInDate, setCheckInDate] = useState("");
-  // const [checkOutDate, setCheckOutDate] = useState("");
-  // const [guests, setGuests] = useState(1);
-  // const [rooms, setRooms] = useState({});
-
-  const [formData, dispatch] = useReducer(reducer, initialState);
-
   useEffect(() => {
-    // if (reservation) {
-    //   setCheckInDate(reservation.check_in_date);
-    //   setCheckOutDate(reservation.check_out_date);
-    //   setGuests(reservation.guests);
-    //   setRooms(reservation.rooms);
-    // }
-
+    // check if reservation equals data and formData.checkInDate is the same as initial state so that we can do this side effect, else we will repeatly  trigger this effect and cause infinite re-rendering.
     if (reservation === data && formData.checkInDate === "") {
       dispatch({
         type: "origin_state_inject",
@@ -104,22 +98,18 @@ function ReservationDetail() {
   const hotel = reservation?.hotels;
 
   function handleCheckInDateChange(date) {
-    // setCheckInDate(formatDate(date));
     dispatch({ type: "check_in_date_edit", payload: formatDate(date) });
   }
 
   function handleCheckOutDateChange(date) {
-    // setCheckOutDate(formatDate(date));
     dispatch({ type: "check_out_date_edit", payload: formatDate(date) });
   }
 
   function handleGuestsChange(newGuests) {
-    // setGuests(newGuests);
     dispatch({ type: "guests_edit", payload: newGuests });
   }
 
   function handleRoomsChange(newRooms) {
-    // setRooms(newRooms);
     dispatch({ type: "rooms_edit", payload: newRooms });
   }
 
@@ -133,17 +123,12 @@ function ReservationDetail() {
       0,
     );
 
-    // if (checkInDate && checkOutDate && roomLength) {
-    //   const newReservation = {
-    //     createdAt: new Date().toISOString(),
-    //     check_in_date: checkInDate,
-    //     check_out_date: checkOutDate,
-    //     rooms,
-    //     guests,
-    //     hotelId: hotel.id,
-    //   };
-
-    if (formData.checkInDate && formData.checkOutDate && roomLength) {
+    if (
+      formData.checkInDate &&
+      formData.checkOutDate &&
+      roomLength &&
+      subtractDates(formData.checkInDate, formData.checkOutDate) > 0
+    ) {
       const newReservation = {
         createdAt: new Date().toISOString(),
         check_in_date: formData.checkInDate,

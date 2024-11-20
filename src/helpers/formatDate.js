@@ -43,6 +43,7 @@ export function formatTime(isoString) {
 
 export function subtractDates(dateStr1, dateStr2) {
   function stringToDate(dateStr) {
+    dateStr = dateStr.replaceAll("/", "-");
     const parts = dateStr.split("-");
     const year = parseInt(parts[0], 10);
     const month = parseInt(parts[1], 10); // Months are 0-indexed in JavaScript
@@ -55,7 +56,7 @@ export function subtractDates(dateStr1, dateStr2) {
   const date2 = stringToDate(dateStr2);
 
   // Calculate the time difference in milliseconds
-  const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+  const timeDiff = date2.getTime() - date1.getTime();
 
   // Convert the time difference to days
   const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));

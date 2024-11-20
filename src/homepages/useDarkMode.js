@@ -20,7 +20,7 @@ export function useDarkMode() {
     useEffect hook with empty dependencies array runs once after the initial render.
     The MutationObserver is created and set up.
     Once set up, the observer continues to run independently of React's lifecycle.
-    The observer persists and continues to monitor the DOM for changes ocne initialized.
+    The observer persists and continues to monitor the DOM for changes once initialized.
     The callback function has closure over the setIsDarkMode function, allowing it to update the React state.
     */
     const observer = new MutationObserver((mutations) => {
@@ -39,7 +39,7 @@ export function useDarkMode() {
 
   const toggleDarkMode = () => {
     document.documentElement.classList.toggle("dark");
-    setIsDarkMode(!isDarkMode);
+    setIsDarkMode((prevMode) => !prevMode);
   };
 
   return [isDarkMode, toggleDarkMode];

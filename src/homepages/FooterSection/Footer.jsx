@@ -27,13 +27,14 @@ function Footer() {
             <FooterColumnTitle>Connect With Us</FooterColumnTitle>
 
             <form className="mt-4">
-              <label htmlFor="newsletter" className="mb-2 block text-sm">
+              <label htmlFor="news-letter" className="mb-2 block text-sm">
                 Stay updated with our latest offers and travel tips!
               </label>
               <div className="flex flex-col md:flex-row">
                 <input
                   type="email"
-                  id="newsletter"
+                  id="news-letter"
+                  name="newsLetter"
                   placeholder="Your email"
                   className="w-full px-3 py-2 text-black outline-none"
                 />

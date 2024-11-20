@@ -37,17 +37,6 @@ function SearchItem({
   function handleRoomTypeMinus(e, roomType) {
     e.preventDefault();
 
-    // onChange((prevRooms) => {
-    //   const updatedRooms = { ...prevRooms };
-    //   if (updatedRooms[roomType]) {
-    //     updatedRooms[roomType] = Math.max(0, updatedRooms[roomType] - 1);
-    //     if (updatedRooms[roomType] === 0) {
-    //       delete updatedRooms[roomType];
-    //     }
-    //   }
-    //   return updatedRooms;
-    // });
-
     const updatedRooms = { ...value };
     if (updatedRooms[roomType]) {
       updatedRooms[roomType] = Math.max(0, updatedRooms[roomType] - 1);
@@ -61,11 +50,6 @@ function SearchItem({
 
   function handleRoomTypePlus(e, roomType) {
     e.preventDefault();
-
-    // onChange((prevRooms) => ({
-    //   ...prevRooms,
-    //   [roomType]: (prevRooms[roomType] || 0) + 1,
-    // }));
 
     const updatedRooms = { ...value, [roomType]: (value[roomType] || 0) + 1 };
 

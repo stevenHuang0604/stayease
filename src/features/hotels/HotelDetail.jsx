@@ -14,7 +14,7 @@ import { getHotelById } from "../../services/apiHotel";
 import { useBookmarks } from "../bookmarks/useBookmarks";
 import SearchItem from "../../ui/SearchItem";
 import { useUpdateBookmark } from "../bookmarks/useUpdateBookmark";
-import { formatDate } from "../../helpers/formatDate";
+import { formatDate, subtractDates } from "../../helpers/formatDate";
 import { createReservation } from "../../services/apiReservations";
 import Rating from "../../ui/Rating";
 import Location from "../../ui/Location";
@@ -59,7 +59,12 @@ function HotelDetail() {
 
     const roomLength = Object.values(rooms).reduce((acc, cur) => acc + cur, 0);
 
-    if (checkInDate && checkOutDate && roomLength) {
+    if (
+      checkInDate &&
+      checkOutDate &&
+      roomLength &&
+      subtractDates(checkInDate, checkOutDate) > 0
+    ) {
       const newReservation = {
         createdAt: new Date().toISOString(),
         check_in_date: checkInDate,
@@ -197,7 +202,7 @@ function HotelDetail() {
 
                   <SearchItem
                     fieldName="Guests"
-                    placeholder="2 Guests"
+                    placeholder="1 Guests"
                     fieldIcon={<FiUsers className="h-6 w-6 text-lg" />}
                     value={guests}
                     onChange={handleGuestsChange}
