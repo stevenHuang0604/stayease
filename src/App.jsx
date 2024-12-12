@@ -17,14 +17,20 @@ import ReservationDetail, {
   loader as reservationLoader,
 } from "./features/reservations/ReservationDetail";
 
+/* -------------------------------------------------------------------------- */
+/*                               QUERY CLIENT                                 */
+/* -------------------------------------------------------------------------- */
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 0,
+      staleTime: Infinity,
     },
   },
 });
 
+/* -------------------------------------------------------------------------- */
+/*                           ROUTER CONFIGURATION                             */
+/* -------------------------------------------------------------------------- */
 const router = createBrowserRouter([
   {
     path: "/",
