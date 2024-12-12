@@ -125,7 +125,3 @@ To run this project locally:
    ```
 
 7. Open your browser and navigate to `http://localhost:5173` (or the port specified by Vite) to view the app.
-
-## License
-
-This project is open source and available under the MIT License. See the [LICENSE](LICENSE) file for more information.
