@@ -1,7 +1,7 @@
-import { useDarkMode } from "../useDarkMode";
+import { useSelector } from "react-redux";
 
 function Logo() {
-  const [isDarkMode] = useDarkMode();
+  const { isDarkMode } = useSelector((state) => state.mode);
 
   const src = isDarkMode ? "/logo-dark.svg" : "/logo-light.svg";
 
