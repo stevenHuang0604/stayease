@@ -6,11 +6,12 @@ export function useBookmarks() {
   const {
     data: bookmarks,
     isLoading,
+    isError,
     error,
   } = useQuery({
     queryKey: ["bookmarks"],
     queryFn: getBookmarks,
   });
 
-  return { bookmarks, isLoading, error };
+  return { bookmarks, isLoading, isError, error };
 }

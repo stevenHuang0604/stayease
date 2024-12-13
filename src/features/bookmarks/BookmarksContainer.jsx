@@ -4,9 +4,9 @@ import BookmarkItem from "./BookmarkItem";
 import { useBookmarks } from "./useBookmarks";
 
 function BookmarksContainer() {
-  const { bookmarks, isLoading, error } = useBookmarks();
+  const { bookmarks, isLoading, isError, error } = useBookmarks();
 
-  if (error) {
+  if (isError) {
     return <ErrorFetch error={error} />;
   }
 
