@@ -4,14 +4,17 @@ import Spinner from "../../ui/Spinner";
 import ReservationItem from "./ReservationItem";
 import { fake_data } from "../../fake_data/fake_data";
 import { useReservations } from "./useReservations";
+import ErrorFetch from "../../ui/ErrorFetch";
 
 function ReservationsContainer({ page = "reservations" }) {
   const md = useMediaQuery({
     query: "(min-width: 768px)",
   });
 
-  const { data, isLoading } = useReservations();
+  const { data, isLoading, isError, error } = useReservations();
   let reservations;
+
+  if (isError) return <ErrorFetch error={error} />;
 
   if (isLoading) return <Spinner />;
 
