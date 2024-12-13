@@ -9,14 +9,15 @@ function Button({
   ariaLabel,
   children,
 }) {
-  let className = "fvc rounded-lg font-semibold tracking-wide ";
+  let className =
+    "fvc rounded-lg font-semibold tracking-wide shadow-slate-400/50 bg-transparent ";
 
   // variant styles
   const variants = {
     default: "",
-    outline: "bg-transparent outline outline-1",
-    ghost: "bg-transparent hover:bg-opacity-10 dark:hover:bg-opacity-10",
-    link: "bg-transparent underline hover:bg-opacity-10 dark:hover:bg-opacity-10",
+    outline: "outline outline-1",
+    ghost: "hover:bg-opacity-10 dark:hover:bg-opacity-10",
+    link: "underline hover:bg-opacity-10 dark:hover:bg-opacity-10",
   };
   className += variants[variant] + " ";
 
@@ -61,10 +62,10 @@ function Button({
 
   // size styles
   const sizes = {
-    small: "px-2 py-1 sm:text-sm shadow-sm text-xs shadow-slate-400/50",
-    medium: "px-3 py-1.5 md:text-base shadow text-sm shadow-slate-400/50",
-    large: "px-4 py-2 lg:text-lg shadow-lg text-base shadow-slate-400/50",
-    xl: "px-6 py-3 text-xl shadow-xl shadow-slate-400/50",
+    small: "px-2 py-1 sm:text-sm shadow-sm text-xs",
+    medium: "px-3 py-1.5 md:text-base shadow text-sm",
+    large: "px-4 py-2 lg:text-lg shadow-lg text-base",
+    xl: "px-6 py-3 text-xl shadow-xl",
   };
   className += sizes[size] + " ";
 
