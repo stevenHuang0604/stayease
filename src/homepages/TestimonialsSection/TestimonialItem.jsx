@@ -1,27 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function TestimonialItem({ name, feedback, title, avatar }) {
   const [imageLoaded, setImageLoaded] = useState(false);
-
-  // lazy loading image
-  useEffect(() => {
-    const img = new Image();
-    img.onload = () => setImageLoaded(true);
-    img.src = avatar;
-  }, [avatar]);
 
   return (
     <div className="rounded-xl border-2 border-solid border-slate-200 bg-slate-50 p-6 transition-all duration-200 hover:border-violet-200 hover:shadow-xl md:p-4 lg:p-6 dark:border-slate-800 dark:bg-slate-950 dark:hover:border-violet-200 dark:hover:shadow-slate-400/50">
       <div className="flex flex-col gap-6">
         <div className="flex items-center justify-start gap-3 md:flex-col lg:flex-row">
           <div className="h-12 w-12 overflow-hidden rounded-full">
-            {imageLoaded ? (
-              <img
-                src={avatar}
-                className="w-fill h-full object-cover"
-                alt={name}
-              />
-            ) : (
+            <img
+              src={avatar}
+              loading="lazy"
+              className={`h-full w-full object-cover ${imageLoaded ? "block" : "hidden"}`}
+              alt={name}
+              onLoad={() => setImageLoaded(true)}
+              onError={() => setImageLoaded(false)} // Handle load failures
+            />
+            {!imageLoaded && (
               <div className="flex h-full w-full items-center justify-center bg-slate-300 text-slate-500 dark:bg-slate-700">
                 {name.charAt(0)}
               </div>
