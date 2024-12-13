@@ -4,9 +4,9 @@ import HotelPreviewCard from "./HotelPreviewCard";
 import { usePopularHotels } from "./usePopularHotels";
 
 function HotelsContainer() {
-  const { popularHotels, isLoading, error } = usePopularHotels();
+  const { popularHotels, isLoading, isError, error } = usePopularHotels();
 
-  if (error) {
+  if (isError) {
     return <ErrorFetch error={error} />;
   }
 

@@ -6,11 +6,12 @@ export function usePopularHotels() {
   const {
     data: popularHotels,
     isLoading,
+    isError,
     error,
   } = useQuery({
     queryKey: ["popular-hotels"],
     queryFn: getPopularHotels,
   });
 
-  return { popularHotels, isLoading, error };
+  return { popularHotels, isLoading, isError, error };
 }
