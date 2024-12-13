@@ -56,7 +56,7 @@ function HotelDetail() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
+    console.log(checkInDate, checkOutDate);
     const roomLength = Object.values(rooms).reduce((acc, cur) => acc + cur, 0);
 
     if (

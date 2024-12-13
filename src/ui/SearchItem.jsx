@@ -17,7 +17,7 @@ function SearchItem({
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleModal() {
-    setIsOpen(!isOpen);
+    setIsOpen((prevState) => !prevState);
   }
 
   function handeClose() {
@@ -121,6 +121,7 @@ function SearchItem({
             onSelect={handeClose}
             onClickOutside={handeClose}
             inline
+            minDate={new Date()}
           />
         </div>
       )}

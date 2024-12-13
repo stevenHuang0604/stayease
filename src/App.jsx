@@ -25,7 +25,7 @@ import { store } from "./store/store";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: Infinity,
+      staleTime: 0,
     },
   },
 });
