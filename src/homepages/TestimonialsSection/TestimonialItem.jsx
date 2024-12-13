@@ -19,13 +19,14 @@ function TestimonialItem({ name, feedback, title, avatar }) {
       <div className="flex flex-col gap-6">
         <div className="flex items-center justify-start gap-3 md:flex-col lg:flex-row">
           <div className="h-12 w-12 overflow-hidden rounded-full">
-            <img
-              src={avatar}
-              loading="lazy"
-              className={`h-full w-full object-cover ${imageLoaded ? "block" : "hidden"}`}
-              alt={name}
-            />
-            {!imageLoaded && (
+            {imageLoaded ? (
+              <img
+                src={avatar}
+                loading="lazy"
+                className={`h-full w-full object-cover ${imageLoaded ? "block" : "hidden"}`}
+                alt={name}
+              />
+            ) : (
               <div className="flex h-full w-full items-center justify-center bg-slate-300 text-slate-500 dark:bg-slate-700">
                 {name.charAt(0)}
               </div>
