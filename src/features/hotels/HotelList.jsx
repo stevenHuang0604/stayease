@@ -8,12 +8,12 @@ import ErrorFetch from "../../ui/ErrorFetch";
 
 function HotelList() {
   const [searchParams] = useSearchParams();
-  const { hotels, isLoading, error } = useHotelsByDestination();
+  const { hotels, isLoading, isError, error } = useHotelsByDestination();
   const { bookmarks } = useBookmarks();
 
   const destination = searchParams.get("destination");
 
-  if (error) {
+  if (isError) {
     return <ErrorFetch error={error} />;
   }
 

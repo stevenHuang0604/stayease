@@ -12,6 +12,7 @@ export function useHotelsByDestination() {
   const {
     data: hotels,
     isLoading,
+    isError,
     error,
   } = useQuery({
     queryKey: ["hotels", destination],
@@ -24,5 +25,5 @@ export function useHotelsByDestination() {
       queryClient.removeQueries({ queryKey: ["hotels", destination] });
   }, [hotels, destination, queryClient]);
 
-  return { hotels, isLoading, error };
+  return { hotels, isLoading, isError, error };
 }

@@ -12,6 +12,10 @@ function HotelPreviewCard({ hotel }) {
     const img = new Image();
     img.onload = () => setImageLoaded(true);
     img.src = hotel.image;
+
+    return () => {
+      img.onload = null;
+    };
   }, [hotel.image]);
 
   return (
