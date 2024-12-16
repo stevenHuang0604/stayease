@@ -6,7 +6,8 @@
 
 # STAYEASE
 
-StayEase is a modern, user-friendly hotel booking platform designed to simplify the process of finding and reserving accommodations. With an intuitive interface and powerful features, StayEase offers a seamless experience for travelers looking for their perfect stay.
+Hotel booking platform designed to finding and reserving accommodations. With an intuitive interface, offers a
+seamless experience for travelers looking for their perfect stay.
 
 ## Screenshots
 
@@ -116,12 +117,10 @@ To run this project locally:
    VITE_SUPABASE_KEY=your_supabase_key
    ```
 
-5. Set up your Supabase database with the necessary tables and data. (Detailed instructions for database setup can be added here)
+5. Set up your Supabase database with the necessary tables and data.
 
 6. Start the development server:
 
    ```
    npm run dev
    ```
-
-7. Open your browser and navigate to `http://localhost:5173` (or the port specified by Vite) to view the app.
