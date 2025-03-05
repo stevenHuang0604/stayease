@@ -5,7 +5,7 @@ import Logo from "./Logo";
 
 function Navigation() {
   return (
-    <nav className="mx-auto h-20 max-w-full border-b bg-violet-50 bg-opacity-30 dark:bg-violet-950">
+    <nav className="mx-auto h-20 w-full max-w-full border-b bg-violet-50 bg-opacity-30 dark:bg-violet-950">
       <div className="flex h-full items-center px-8 py-3">
         <div className="h-full">
           <Link to="/" className="flex h-full items-center gap-4">
