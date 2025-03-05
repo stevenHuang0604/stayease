@@ -11,6 +11,8 @@ export function usePopularHotels() {
   } = useQuery({
     queryKey: ["popular-hotels"],
     queryFn: getPopularHotels,
+    // Never be considered stale.
+    staleTime: Infinity,
   });
 
   return { popularHotels, isLoading, isError, error };
