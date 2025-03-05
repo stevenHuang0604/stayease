@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FaBed,
@@ -10,7 +11,6 @@ import {
 import { useUpdateBookmark } from "../bookmarks/useUpdateBookmark";
 import Rating from "../../ui/Rating";
 import Location from "../../ui/Location";
-import { useEffect, useState } from "react";
 
 function HotelListItem({ hotel, bookmarks }) {
   const { updateBookmark } = useUpdateBookmark();

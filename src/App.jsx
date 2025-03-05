@@ -67,7 +67,7 @@ const router = createBrowserRouter([
       {
         path: "reservations/:id",
         element: <ReservationDetail />,
-        loader: reservationLoader,
+        // loader: reservationLoader,
       },
     ],
   },
