@@ -14,9 +14,7 @@ import HotelDetail, {
 import Bookmarks from "./pages/Bookmarks";
 import MyReservations from "./pages/MyReservations";
 import PageNotFound from "./pages/PageNotFound";
-import ReservationDetail, {
-  loader as reservationLoader,
-} from "./features/reservations/ReservationDetail";
+import ReservationDetail from "./features/reservations/ReservationDetail";
 import { store } from "./store/store";
 
 /* -------------------------------------------------------------------------- */
@@ -67,7 +65,6 @@ const router = createBrowserRouter([
       {
         path: "reservations/:id",
         element: <ReservationDetail />,
-        // loader: reservationLoader,
       },
     ],
   },

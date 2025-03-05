@@ -311,9 +311,3 @@ function ReservationDetail() {
 }
 
 export default ReservationDetail;
-
-export async function loader({ params }) {
-  const reservation = await getReservationById(params.id);
-
-  return reservation;
-}
