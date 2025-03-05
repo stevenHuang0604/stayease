@@ -7,7 +7,6 @@ import {
 
 import Logo from "../homepages/NavigationSection/Logo";
 import ModeButton from "./ModeButton";
-import { useMediaQuery } from "react-responsive";
 
 function activeLinkStyling({ isActive }) {
   return `fvc gap-2 rounded-md px-3 py-2 transition-all ${
@@ -33,22 +32,16 @@ function activeLinkContent(Icon, title) {
 }
 
 function AppLayout() {
-  const sm = useMediaQuery({
-    query: "(min-width: 640px)",
-  });
-
   return (
     <div className="flex h-screen flex-col">
       <header className="mx-auto w-full border-b-[1px] bg-violet-50 bg-opacity-30 dark:bg-violet-950">
         <div className="fvc h-20 px-8 py-3">
           <div className="h-full">
-            <Link to={window.location.origin} className="fvc h-full gap-4">
+            <Link to="/" className="fvc h-full gap-4">
               <Logo />
-              {sm && (
-                <span className="font-Agbalumo text-2xl font-bold tracking-wide text-violet-600 dark:text-violet-100">
-                  StayEase
-                </span>
-              )}
+              <span className="hidden font-Agbalumo text-2xl font-bold tracking-wide text-violet-600 md:block dark:text-violet-100">
+                StayEase
+              </span>
             </Link>
           </div>
           <nav className="fvc ml-auto gap-4 text-lg">
