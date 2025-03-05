@@ -12,9 +12,7 @@ function ReservationItem({ reservation }) {
   const [modalOpen, setModalOpen] = useState(false);
   const { mutate: deleteReservation, isLoading: isDeleting } =
     useDeleteReservation();
-  const md = useMediaQuery({
-    query: "(min-width: 768px)",
-  });
+
   const sm = useMediaQuery({
     query: "(min-width: 640px)",
   });
@@ -53,26 +51,21 @@ function ReservationItem({ reservation }) {
           {formatDate(new Date(reservation.check_out_date).toISOString())}
         </span>
       </td>
-      {md && (
-        <>
-          <td>{reservation.guests} guests</td>
-          <td>
-            {Object.values(reservation.rooms).reduce(
-              (acc, cur) => acc + Number(cur),
-              0,
-            )}{" "}
-            rooms
-          </td>
-          <td>
-            $
-            {Object.entries(reservation.rooms)
-              .map(
-                ([roomType, order]) => hotel.room_types[roomType].price * order,
-              )
-              .reduce((acc, cur) => acc + cur, 0)}
-          </td>
-        </>
-      )}
+
+      <td className="hidden md:block">{reservation.guests} guests</td>
+      <td className="hidden md:block">
+        {Object.values(reservation.rooms).reduce(
+          (acc, cur) => acc + Number(cur),
+          0,
+        )}{" "}
+        rooms
+      </td>
+      <td className="hidden md:block">
+        $
+        {Object.entries(reservation.rooms)
+          .map(([roomType, order]) => hotel.room_types[roomType].price * order)
+          .reduce((acc, cur) => acc + cur, 0)}
+      </td>
 
       <td className="relative">
         {sm ? (
@@ -86,33 +79,28 @@ function ReservationItem({ reservation }) {
             <HiOutlineEllipsisVertical />
           </Button>
         ) : (
-          <>
-            <div className="fc gap-4 text-lg">
-              <Link
-                to={
-                  window.location.pathname === "/"
-                    ? window.location.origin
-                    : `/app/reservations/${reservation.id}`
-                }
-                className="fc gap-4 text-violet-500"
-              >
-                <span>
-                  <HiEye />
-                </span>
-                <span className="hidden lg:block">Details</span>
-              </Link>
+          <div className="fc gap-4 text-lg">
+            <Link
+              to={
+                window.location.pathname === "/"
+                  ? window.location.origin
+                  : `/app/reservations/${reservation.id}`
+              }
+              className="fc gap-4 text-violet-500"
+            >
+              <span>
+                <HiEye />
+              </span>
+              <span className="hidden lg:block">Details</span>
+            </Link>
 
-              <button
-                className="fc gap-4 text-violet-500"
-                onClick={handleDelete}
-              >
-                <span>
-                  <HiTrash />
-                </span>
-                <span className="hidden lg:block">Delete</span>
-              </button>
-            </div>
-          </>
+            <button className="fc gap-4 text-violet-500" onClick={handleDelete}>
+              <span>
+                <HiTrash />
+              </span>
+              <span className="hidden lg:block">Delete</span>
+            </button>
+          </div>
         )}
 
         {sm && modalOpen && (

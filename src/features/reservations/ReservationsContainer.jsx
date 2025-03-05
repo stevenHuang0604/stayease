@@ -1,5 +1,3 @@
-import { useMediaQuery } from "react-responsive";
-
 import Spinner from "../../ui/Spinner";
 import ReservationItem from "./ReservationItem";
 import { fake_data } from "../../fake_data/fake_data";
@@ -7,10 +5,6 @@ import { useReservations } from "./useReservations";
 import ErrorFetch from "../../ui/ErrorFetch";
 
 function ReservationsContainer({ page = "reservations" }) {
-  const md = useMediaQuery({
-    query: "(min-width: 768px)",
-  });
-
   const { data, isLoading, isError, error } = useReservations();
   let reservations;
 
@@ -39,13 +33,9 @@ function ReservationsContainer({ page = "reservations" }) {
               <th>city</th>
               <th>dates</th>
 
-              {md && (
-                <>
-                  <th>guests</th>
-                  <th>rooms</th>
-                  <th>amount</th>
-                </>
-              )}
+              <th className="hidden md:block">guests</th>
+              <th className="hidden md:block">rooms</th>
+              <th className="hidden md:block">amount</th>
 
               <th></th>
             </tr>
