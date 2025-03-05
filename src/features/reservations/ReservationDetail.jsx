@@ -8,8 +8,6 @@ import {
 } from "react-icons/hi2";
 import { FaLocationArrow, FaLocationDot } from "react-icons/fa6";
 
-import { getReservationById } from "../../services/apiReservations";
-
 import Spinner from "../../ui/Spinner";
 import {
   formatTime,
