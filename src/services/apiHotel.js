@@ -4,7 +4,9 @@ export async function getHotelsByDestination(destination) {
   const { data: hotels, error } = await supabase
     .from("hotels")
     .select()
-    .or(`city.ilike.%${destination}%,country.ilike.%${destination}%`);
+    .or(
+      `city.ilike.%${destination}%,country.ilike.%${destination}%,name.ilike.%${destination}%`,
+    );
 
   if (error) {
     console.error(error);

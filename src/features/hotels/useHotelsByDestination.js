@@ -17,6 +17,8 @@ export function useHotelsByDestination() {
   } = useQuery({
     queryKey: ["hotels", destination],
     queryFn: () => getHotelsByDestination(destination),
+    // Never be considered stale, unless we invalidate query manually.
+    staleTime: Infinity,
   });
 
   // Remove query key from cache if there is no data in the database
